@@ -1,0 +1,50 @@
+module ALU(
+			clk,
+			in_1,
+			in_2,
+			operation,
+			z,
+			data_out
+			);
+			
+		input clk;
+		input [15:0] in_1;
+		input [15:0] in_2;
+		input [1:0] operation;
+		output reg z;
+		output data_out;
+
+		//Defining symbols to identify logical opeartors
+
+		localparam add = 2'b01;
+		localparam sub = 2'b10;
+		localparam mul = 2'b11;
+	
+		reg [15:0] data;
+		assign data_out = data;
+		
+		always @(in_1 or in_2 or operation)
+		begin
+	
+			case(operation)
+				add: data = in_1 + in_2;
+				sub: data = in_1 - in_2;
+				mul: data = in_1 * in_2;
+				default : data = data;
+			endcase
+	
+		end
+	
+		always @(posedge clk)
+		begin
+			if (data == 16'b0)
+				z = 1'b1;
+			else
+				z = 1'b0;
+
+		end
+	
+endmodule
+	
+	
+	
