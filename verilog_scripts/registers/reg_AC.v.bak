@@ -14,7 +14,7 @@ module reg_AC(
 		input [15:0] data_in;
 		input load_enable;
 		input reset;
-		output [15:0] data_out;
+		output data_out;
 		
 		localparam k=1000; // need to get this externally from memory
 		

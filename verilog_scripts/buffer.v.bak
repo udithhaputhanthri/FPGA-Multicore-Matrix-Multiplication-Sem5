@@ -1,9 +1,8 @@
 module buffer(data_in, select, data_out); 
-	input wire [15:0]data_in;
-	input select;
-	output wire [15:0]data_out; 
+	input wire data_in, select; 
+	output wire data_out; 
 	
-	reg [15:0]data_temp;
+	reg data_temp;
 	
 	assign data_out=data_temp;
 	

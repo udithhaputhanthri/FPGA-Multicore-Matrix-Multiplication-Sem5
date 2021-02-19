@@ -4,7 +4,7 @@ module reg_ID(
 			reset
 			);
 			
-			output data_out;
+			output [15:0] data_out;
 			input clk;
 			input reset;
 			

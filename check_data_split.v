@@ -14,37 +14,40 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
-// CREATED		"Thu Feb 18 21:01:19 2021"
+// CREATED		"Thu Feb 18 21:17:44 2021"
 
-module check_reg(
-	clk,
-	inc,
-	load_enable,
-	reset,
-	data_in,
-	data_out
+module check_data_split(
+	in1,
+	in2,
+	in3,
+	out2,
+	out5,
+	out4,
+	out1,
+	out3
 );
 
 
-input wire	clk;
-input wire	inc;
-input wire	load_enable;
-input wire	reset;
-input wire	[15:0] data_in;
-output wire	[15:0] data_out;
+input wire	[3:0] in1;
+input wire	[3:0] in2;
+input wire	[1:0] in3;
+output wire	out2;
+output wire	out5;
+output wire	out4;
+output wire	[2:0] out1;
+output wire	[3:0] out3;
+
+wire	[3:0] kkk;
+
+assign	out3 = in2;
 
 
 
-
-
-
-reg_RstIncLd	b2v_inst(
-	.clk(clk),
-	.inc(inc),
-	.load_enable(load_enable),
-	.reset(reset),
-	.data_in(data_in),
-	.data_out(data_out));
-
+assign	out2 = kkk[3];
+assign	kkk = in1;
+assign	out5 = kkk[1];
+assign	out4 = kkk[0];
+assign	out1[2:0] = kkk[2:0];
+assign	kkk[1:0] = in3;
 
 endmodule

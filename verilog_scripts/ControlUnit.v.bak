@@ -20,7 +20,7 @@ module ControlUnit(
 		
 
 	input clk,z, start;
-	input [15:0] instruction_register;
+	input instruction_register;
 	output reg [3:0] reg_select; //size varies according to the no of registers we have
 	output reg [3:0] memory_select; //need to look
 	output reg [1:0] alu_operation;  //we only have 3 operations

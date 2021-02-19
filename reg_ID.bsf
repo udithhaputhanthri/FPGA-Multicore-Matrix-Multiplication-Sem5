@@ -20,7 +20,7 @@ refer to the applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 176 96)
+	(rect 16 16 192 96)
 	(text "reg_ID" (rect 5 0 33 12)(font "Arial" ))
 	(text "inst" (rect 8 64 20 76)(font "Arial" ))
 	(port
@@ -38,13 +38,13 @@ refer to the applicable agreement for further details.
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
-		(pt 160 32)
+		(pt 176 32)
 		(output)
-		(text "data_out" (rect 0 0 34 12)(font "Arial" ))
-		(text "data_out" (rect 105 27 139 39)(font "Arial" ))
-		(line (pt 160 32)(pt 144 32)(line_width 1))
+		(text "data_out[15..0]" (rect 0 0 57 12)(font "Arial" ))
+		(text "data_out[15..0]" (rect 98 27 155 39)(font "Arial" ))
+		(line (pt 176 32)(pt 160 32)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 144 64)(line_width 1))
+		(rectangle (rect 16 16 160 64)(line_width 1))
 	)
 )
