@@ -1,0 +1,38 @@
+module ControlUnit(clk, IR, z, start, OPs); // implement OPs -> Control Signals!!!
+	input clk, IR, z;
+	output reg [50:0] OPs; // check and change25
+
+	reg [15:0] map_addr;
+	assign map_addr=IR<<3;			
+
+	wire [15:0] jump_addr;
+	wire [15:0] inc_addr;
+	wire [15:0] mux_out;
+	wire [15:0] reg_out;
+	wire [1:0] addr_select;
+
+	Mux mux1(.input1(map_addr), .input2(jump_addr), .input3(inc_addr), .data_out(mux_out), .select(addr_select));
+	Register_16bit register(.clk(clk), .data_in(mux_out), .data_out(reg_out), .load_enable(1), .reset(0));
+	
+
+	wire [1:0] condition;
+	wire BT;
+
+	microcode micromemory(.in_addr(reg_out), .condition(condition), .BT(BT), .Ops(OPs), .out_addr(jump_addr)); // implement !!!
+	increment_register_16bit_without_clk inc_reg(.data_in(reg_out), .data_out(inc_addr));  // implement !!!
+
+	wire [15:0] logic_in;
+	Mux mux2(.input1(1), .input2(z), .input3(~z), .data_out(logic_in), .select(condition));
+	
+	//BT, logic_in, outs -> S1, S0
+	assign addr_select[1]=BT;
+	assign addr_select[0]= ~BT and logic_in;
+
+endmodule	
+
+
+
+
+
+
+	

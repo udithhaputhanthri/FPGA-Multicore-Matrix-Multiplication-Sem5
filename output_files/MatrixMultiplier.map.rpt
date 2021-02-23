@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MatrixMultiplier
-Thu Feb 11 21:05:27 2021
+Mon Feb 22 21:30:26 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -11,7 +11,6 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
   5. Analysis & Synthesis Messages
-  6. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -37,10 +36,10 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Feb 11 21:05:27 2021           ;
+; Analysis & Synthesis Status        ; Failed - Mon Feb 22 21:30:26 2021           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; MatrixMultiplier                            ;
-; Top-level Entity Name              ; check_reg                                   ;
+; Top-level Entity Name              ; microcode                                   ;
 ; Family                             ; Cyclone IV E                                ;
 ; Total logic elements               ; N/A until Partition Merge                   ;
 ;     Total combinational functions  ; N/A until Partition Merge                   ;
@@ -59,7 +58,7 @@ refer to the applicable agreement for further details.
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
-; Top-level entity name                                            ; check_reg          ; MatrixMultiplier   ;
+; Top-level entity name                                            ; microcode          ; MatrixMultiplier   ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -161,10 +160,12 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Feb 11 21:05:11 2021
+    Info: Processing started: Mon Feb 22 21:30:10 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MatrixMultiplier -c MatrixMultiplier
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/controlunit/microcode.v
+    Info (12023): Found entity 1: microcode File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/microcode.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/registers/reg_rstld.v
     Info (12023): Found entity 1: reg_RstLd File: E:/fpga/MatrixMultiplier/verilog_scripts/registers/reg_RstLd.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/registers/reg_rstincld.v
@@ -175,8 +176,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file verilog
     Info (12023): Found entity 1: reg_ID File: E:/fpga/MatrixMultiplier/verilog_scripts/registers/reg_ID.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/registers/reg_ac.v
     Info (12023): Found entity 1: reg_AC File: E:/fpga/MatrixMultiplier/verilog_scripts/registers/reg_AC.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/controlunit.v
-    Info (12023): Found entity 1: ControlUnit File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/buffer.v
     Info (12023): Found entity 1: buffer File: E:/fpga/MatrixMultiplier/verilog_scripts/buffer.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/alu.v
@@ -185,29 +184,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file core.bd
     Info (12023): Found entity 1: core
 Info (12021): Found 1 design units, including 1 entities, in source file check_reg.bdf
     Info (12023): Found entity 1: check_reg
-Info (12127): Elaborating entity "check_reg" for the top level hierarchy
-Error (275046): Illegal name "inc" -- pin name already exists
-Error (275046): Illegal name "load_enable" -- pin name already exists
-Error (275046): Illegal name "inc" -- pin name already exists
-Error (275046): Illegal name "load_enable" -- pin name already exists
-Error (275046): Illegal name "inc" -- pin name already exists
-Error (275046): Illegal name "load_enable" -- pin name already exists
-Error (275046): Illegal name "inc" -- pin name already exists
-Error (275046): Illegal name "load_enable" -- pin name already exists
-Error (275060): Pin "inc" overlaps another pin, block, or symbol
-Error (275060): Pin "load_enable" overlaps another pin, block, or symbol
-Error (12153): Can't elaborate top-level user hierarchy
-Info (144001): Generated suppressed messages file E:/fpga/MatrixMultiplier/output_files/MatrixMultiplier.map.smsg
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 11 errors, 2 warnings
-    Error: Peak virtual memory: 4709 megabytes
-    Error: Processing ended: Thu Feb 11 21:05:27 2021
+Info (12021): Found 1 design units, including 1 entities, in source file check_data_split.bdf
+    Info (12023): Found entity 1: check_data_split
+Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/mux/mux1_controlunit.v
+    Info (12023): Found entity 1: mux1_ControlUnit File: E:/fpga/MatrixMultiplier/verilog_scripts/Mux/mux1_ControlUnit.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/mux/mux2_controlunit.v
+    Info (12023): Found entity 1: mux2_ControlUnit File: E:/fpga/MatrixMultiplier/verilog_scripts/Mux/mux2_ControlUnit.v Line: 2
+Error (10170): Verilog HDL syntax error at controller.v(31) near text: "and";  expecting ")". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 31
+Error (10112): Ignored design unit "controller" at controller.v(1) due to previous errors File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 1
+Info (12021): Found 0 design units, including 0 entities, in source file verilog_scripts/controlunit/controller.v
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 2 warnings
+    Error: Peak virtual memory: 4707 megabytes
+    Error: Processing ended: Mon Feb 22 21:30:26 2021
     Error: Elapsed time: 00:00:16
-    Error: Total CPU time (on all processors): 00:00:33
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in E:/fpga/MatrixMultiplier/output_files/MatrixMultiplier.map.smsg.
+    Error: Total CPU time (on all processors): 00:00:32
 
 
