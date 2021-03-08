@@ -1,6 +1,6 @@
 module controller(clk, IR, z, OPs); // implement OPs -> Control Signals!!!
 	input clk, IR, z;
-	output reg [50:0] OPs; // check and change25 (number of columns)
+	output [50:0] OPs; // check and change (number of columns)
 
 	wire [15:0] map_addr;
 	assign map_addr=IR<<3; // CHECK 			
@@ -17,20 +17,19 @@ module controller(clk, IR, z, OPs); // implement OPs -> Control Signals!!!
 	wire [1:0] condition;
 	wire BT;
 
-	microcode micromemory(.reg_out(reg_out), .conditon(condition), .BT(BT), .OPs(OPs), .jump_addr(jump_addr));// implement !!!
-	
+	microcode micromemory(.reg_out(reg_out), .condition(condition), .BT(BT), .OPs(OPs), .jump_addr(jump_addr));// implement !!!
 
+	
 	assign inc_addr = reg_out+1;
 	
 	
 	wire [15:0] logic_in;
-	Mux mux2_ControlUnit(.z(z), .select(condition), .logic_in(logic_in));
+	mux2_ControlUnit mux2(.z(z), .select(condition), .logic_in(logic_in));
 	
 	//BT, logic_in, outs -> S1, S0
 	
-	reg add_sel2= (~BT and logic_in);
 	assign addr_select[1]=BT;
-	assign addr_select[0]=addr_sel2;
+	assign addr_select[0]=~BT && logic_in;//addr_sel2;
 
 endmodule	
 

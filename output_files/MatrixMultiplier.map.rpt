@@ -1,5 +1,5 @@
 Analysis & Synthesis report for MatrixMultiplier
-Mon Feb 22 21:30:26 2021
+Thu Mar 04 20:32:42 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -10,7 +10,16 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Port Connectivity Checks: "mux2_ControlUnit:mux2"
+ 10. Port Connectivity Checks: "reg_RstLd:register"
+ 11. Port Connectivity Checks: "mux1_ControlUnit:mux1"
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -36,20 +45,20 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Mon Feb 22 21:30:26 2021           ;
+; Analysis & Synthesis Status        ; Successful - Thu Mar 04 20:32:42 2021       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; MatrixMultiplier                            ;
-; Top-level Entity Name              ; microcode                                   ;
+; Top-level Entity Name              ; controller                                  ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 54                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -58,7 +67,7 @@ refer to the applicable agreement for further details.
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
-; Top-level entity name                                            ; microcode          ; MatrixMultiplier   ;
+; Top-level entity name                                            ; controller         ; MatrixMultiplier   ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -154,13 +163,137 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
+; File Name with User-Entered Path         ; Used in Netlist ; File Type              ; File Name with Absolute Path                                      ; Library ;
++------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
+; verilog_scripts/ControlUnit/microcode.v  ; yes             ; User Verilog HDL File  ; E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/microcode.v  ;         ;
+; verilog_scripts/registers/reg_RstLd.v    ; yes             ; User Verilog HDL File  ; E:/fpga/MatrixMultiplier/verilog_scripts/registers/reg_RstLd.v    ;         ;
+; verilog_scripts/Mux/mux1_ControlUnit.v   ; yes             ; User Verilog HDL File  ; E:/fpga/MatrixMultiplier/verilog_scripts/Mux/mux1_ControlUnit.v   ;         ;
+; verilog_scripts/Mux/mux2_ControlUnit.v   ; yes             ; User Verilog HDL File  ; E:/fpga/MatrixMultiplier/verilog_scripts/Mux/mux2_ControlUnit.v   ;         ;
+; verilog_scripts/ControlUnit/controller.v ; yes             ; User Verilog HDL File  ; E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v ;         ;
++------------------------------------------+-----------------+------------------------+-------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+;                                             ;       ;
+; Total combinational functions               ; 0     ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- <=2 input functions                  ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+;     -- Dedicated logic registers            ; 0     ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 54    ;
+;                                             ;       ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 54    ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; |controller                ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 54   ; 0            ; |controller         ; controller  ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mux2_ControlUnit:mux2"                                                                                                                                                      ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                                                 ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; logic_in ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (16 bits) it drives.  The 15 most-significant bit(s) in the port expression will be connected to GND. ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg_RstLd:register"                                                                                                                                                                          ;
++-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; load_enable     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; load_enable[-1] ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; reset           ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; reset[-1]       ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "mux1_ControlUnit:mux1" ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; map_addr[15..4] ; Input ; Info     ; Stuck at GND ;
+; map_addr[2..0]  ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 54                          ;
+; cycloneiii_lcell_comb ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Mon Feb 22 21:30:10 2021
+    Info: Processing started: Thu Mar 04 20:32:14 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MatrixMultiplier -c MatrixMultiplier
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -180,23 +313,84 @@ Info (12021): Found 1 design units, including 1 entities, in source file verilog
     Info (12023): Found entity 1: buffer File: E:/fpga/MatrixMultiplier/verilog_scripts/buffer.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/alu.v
     Info (12023): Found entity 1: ALU File: E:/fpga/MatrixMultiplier/verilog_scripts/ALU.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file core.bdf
-    Info (12023): Found entity 1: core
-Info (12021): Found 1 design units, including 1 entities, in source file check_reg.bdf
-    Info (12023): Found entity 1: check_reg
-Info (12021): Found 1 design units, including 1 entities, in source file check_data_split.bdf
-    Info (12023): Found entity 1: check_data_split
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/mux/mux1_controlunit.v
     Info (12023): Found entity 1: mux1_ControlUnit File: E:/fpga/MatrixMultiplier/verilog_scripts/Mux/mux1_ControlUnit.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/mux/mux2_controlunit.v
     Info (12023): Found entity 1: mux2_ControlUnit File: E:/fpga/MatrixMultiplier/verilog_scripts/Mux/mux2_ControlUnit.v Line: 2
-Error (10170): Verilog HDL syntax error at controller.v(31) near text: "and";  expecting ")". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 31
-Error (10112): Ignored design unit "controller" at controller.v(1) due to previous errors File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 1
-Info (12021): Found 0 design units, including 0 entities, in source file verilog_scripts/controlunit/controller.v
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 2 warnings
-    Error: Peak virtual memory: 4707 megabytes
-    Error: Processing ended: Mon Feb 22 21:30:26 2021
-    Error: Elapsed time: 00:00:16
-    Error: Total CPU time (on all processors): 00:00:32
+Info (12021): Found 1 design units, including 1 entities, in source file verilog_scripts/controlunit/controller.v
+    Info (12023): Found entity 1: controller File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 1
+Info (12127): Elaborating entity "controller" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at controller.v(23): truncated value with size 32 to match size of target (16) File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 23
+Info (12128): Elaborating entity "mux1_ControlUnit" for hierarchy "mux1_ControlUnit:mux1" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 14
+Info (12128): Elaborating entity "reg_RstLd" for hierarchy "reg_RstLd:register" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 15
+Info (12128): Elaborating entity "microcode" for hierarchy "microcode:micromemory" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 20
+Info (12128): Elaborating entity "mux2_ControlUnit" for hierarchy "mux2_ControlUnit:mux2" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 27
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "OPs[0]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[1]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[2]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[3]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[4]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[5]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[6]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[7]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[8]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[9]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[10]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[11]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[12]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[13]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[14]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[15]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[16]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[17]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[18]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[19]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[20]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[21]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[22]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[23]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[24]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[25]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[26]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[27]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[28]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[29]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[30]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[31]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[32]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[33]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[34]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[35]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[36]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[37]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[38]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[39]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[40]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[41]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[42]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[43]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[44]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[45]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[46]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[47]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[48]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[49]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+    Warning (13410): Pin "OPs[50]" is stuck at GND File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 3
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 2
+    Warning (15610): No output dependent on input pin "IR" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 2
+    Warning (15610): No output dependent on input pin "z" File: E:/fpga/MatrixMultiplier/verilog_scripts/ControlUnit/controller.v Line: 2
+Info (21057): Implemented 54 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 51 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 60 warnings
+    Info: Peak virtual memory: 4736 megabytes
+    Info: Processing ended: Thu Mar 04 20:32:42 2021
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:34
 
 

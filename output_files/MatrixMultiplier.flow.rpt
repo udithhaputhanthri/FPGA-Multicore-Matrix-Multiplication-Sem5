@@ -1,5 +1,5 @@
 Flow report for MatrixMultiplier
-Mon Feb 22 21:30:26 2021
+Thu Mar 04 20:33:11 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,20 +40,22 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Flow Failed - Mon Feb 22 21:30:26 2021      ;
+; Flow Status                        ; Successful - Thu Mar 04 20:33:11 2021       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; MatrixMultiplier                            ;
-; Top-level Entity Name              ; microcode                                   ;
+; Top-level Entity Name              ; controller                                  ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 0 / 6,272 ( 0 % )                           ;
+;     Total combinational functions  ; 0 / 6,272 ( 0 % )                           ;
+;     Dedicated logic registers      ; 0 / 6,272 ( 0 % )                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 54 / 92 ( 59 % )                            ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0 / 276,480 ( 0 % )                         ;
+; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                              ;
+; Total PLLs                         ; 0 / 2 ( 0 % )                               ;
+; Device                             ; EP4CE6E22C6                                 ;
+; Timing Models                      ; Final                                       ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -62,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/22/2021 21:30:11 ;
+; Start date & time ; 03/04/2021 20:32:16 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; MatrixMultiplier    ;
 +-------------------+---------------------+
@@ -73,12 +75,12 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value    ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 184849025606517.161400961016432        ; --               ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --               ; microcode   ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --               ; microcode   ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --               ; microcode   ; Top        ;
+; COMPILER_SIGNATURE_ID               ; 184849025606517.161487013517852        ; --               ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --               ; controller  ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --               ; controller  ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --               ; controller  ; Top        ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --               ; --          ; --         ;
-; TOP_LEVEL_ENTITY                    ; microcode                              ; MatrixMultiplier ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; controller                             ; MatrixMultiplier ; --          ; --         ;
 +-------------------------------------+----------------------------------------+------------------+-------------+------------+
 
 
@@ -87,8 +89,10 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:16     ; 1.0                     ; 4706 MB             ; 00:00:32                           ;
-; Total                ; 00:00:16     ; --                      ; --                  ; 00:00:32                           ;
+; Analysis & Synthesis ; 00:00:25     ; 1.0                     ; 4722 MB             ; 00:00:34                           ;
+; Fitter               ; 00:00:17     ; 1.0                     ; 5235 MB             ; 00:00:05                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4669 MB             ; 00:00:01                           ;
+; Total                ; 00:00:45     ; --                      ; --                  ; 00:00:40                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -98,6 +102,8 @@ refer to the applicable agreement for further details.
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; acerf15          ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; acerf15          ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; acerf15          ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -105,6 +111,8 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off MatrixMultiplier -c MatrixMultiplier
+quartus_fit --read_settings_files=off --write_settings_files=off MatrixMultiplier -c MatrixMultiplier
+quartus_asm --read_settings_files=off --write_settings_files=off MatrixMultiplier -c MatrixMultiplier
 
 
 
