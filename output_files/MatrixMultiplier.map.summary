@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Mar 04 20:32:42 2021
+Analysis & Synthesis Status : Successful - Thu Mar 18 21:02:39 2021
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : MatrixMultiplier
-Top-level Entity Name : controller
+Top-level Entity Name : microcode
 Family : Cyclone IV E
-Total logic elements : 0
-    Total combinational functions : 0
+Total logic elements : 209
+    Total combinational functions : 209
     Dedicated logic registers : 0
 Total registers : 0
-Total pins : 54
+Total pins : 86
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

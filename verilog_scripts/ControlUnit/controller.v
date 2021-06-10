@@ -17,7 +17,7 @@ module controller(clk, IR, z, OPs); // implement OPs -> Control Signals!!!
 	wire [1:0] condition;
 	wire BT;
 
-	microcode micromemory(.reg_out(reg_out), .condition(condition), .BT(BT), .OPs(OPs), .jump_addr(jump_addr));// implement !!!
+	microcode micromemory(.reg_out(reg_out), .condition(condition), .BT(BT), .OPs(OPs), .jump_addr(jump_addr));// implement !!!-> kara yako
 
 	
 	assign inc_addr = reg_out+1;
