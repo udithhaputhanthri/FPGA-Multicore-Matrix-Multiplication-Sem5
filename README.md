@@ -1,2 +1,1 @@
-# FPGA-Multicore-Matrix-Multiplication-Sem5
-Multicore FPGA Matrix Multiplication
+# FPGA-Based-Multicore-Matrix-Multiplier
