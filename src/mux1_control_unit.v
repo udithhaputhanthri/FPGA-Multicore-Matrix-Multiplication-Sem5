@@ -6,7 +6,7 @@ module mux1_control_unit(
 	output reg [15:0] reg_in
 	);
 
-    initial reg_in = 16'd1;
+    // initial reg_in = 16'd1;
 	
 	always @(map_addr or jump_addr or inc_addr or select)
         begin

@@ -12,7 +12,7 @@ module reg_rst_load(
 	input [15:0] data_in;
 	output reg [15:0] data_out;
 	
-	always @(posedge clk)
+	always @(negedge clk)
         begin
             if (load_enable)
                 data_out <= data_in;

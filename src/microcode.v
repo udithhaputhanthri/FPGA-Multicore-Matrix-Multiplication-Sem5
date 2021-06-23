@@ -104,7 +104,7 @@ module microcode(reg_out, condition, BT, OPs, jump_addr); //.in_addr(reg_out), .
 	
 	//reg reg_temp
 	//condition = ucode[reg_temp][0]
-	
+	initial {BT, condition, jump_addr, OPs} = ucode[1];
 	
 	always @(reg_out)
 		{BT, condition, jump_addr, OPs}= ucode[reg_out];

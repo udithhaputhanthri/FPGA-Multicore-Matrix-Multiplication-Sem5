@@ -20,9 +20,9 @@ module controller_tb;
 
     initial begin
        #10 IR <= 0 ; z <= 0; 
-       #10 IR <= 17 ; z <= 0;   //will not change according to IR..Will change values with the clock only
-       #10 IR <= 17 ; z <= 0;   //will not change according to IR
-       #10 IR <= 17 ; z <= 0;   //will not change according to IR
+       #10 IR <= 71 ; z <= 1;   //will not change according to IR..Will change values with the clock only
+       #10 IR <= 71 ; z <= 1;   //will not change according to IR
+       #10 IR <= 71 ; z <= 1;   //will not change according to IR
 
             
 		
