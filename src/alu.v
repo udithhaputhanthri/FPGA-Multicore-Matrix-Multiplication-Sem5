@@ -1,14 +1,11 @@
 module alu(
-			in_bus,
-			in_AC,
-			operation,
-			data_out
-			);
+			input [15:0] in_bus,
+			input [15:0] in_AC,
+			input [2:0] operation,
+			output reg [15:0] data_out
+);
 			
-		input [15:0] in_bus;
-		input [15:0] in_AC;
-		input [2:0] operation;
-		output reg [15:0] data_out;
+		
 
 		//Defining symbols to identify logical opeartors
 

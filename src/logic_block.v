@@ -1,8 +1,10 @@
-module logic_block(BT_in, mux2_out, signal_out);
+module logic_block(
+    input BT_in,   
+    input mux2_out,
+	output [1:0] signal_out
+);
 
-    input BT_in;   
-    input mux2_out;
-	output [1:0] signal_out;
+    
 	
 	
     assign signal_out[1] = BT_in;

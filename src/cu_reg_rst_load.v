@@ -1,4 +1,4 @@
-module reg_rst_load(
+module cu_reg_rst_load(
 	input clk,
 	input reset,
 	input load_enable,
@@ -8,7 +8,7 @@ module reg_rst_load(
 
 	
 	
-	always @(posedge clk)
+	always @(negedge clk)
         begin
             if (load_enable)
                 data_out <= data_in;

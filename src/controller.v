@@ -1,14 +1,19 @@
-module controller(clk, IR, z, OPs);
-	input clk; 
-    input [15:0] IR;  //Bit number will vary according to the number of instructions
-    input z;
-	output [56:0] OPs; //Made a wire because output of micromemory module should be connected to a wire 
+module controller(
+	input clk, 
+    input [15:0] IR,  //Bit number will vary according to the number of instructions
+    input z,
+	output [48:0] OPs //Made a wire because output of micromemory module should be connected to a wire 
+);
+	
 
 	//Map function
 	wire [15:0] map_addr;
 	// assign map_addr = IR<<3; 	
 	// assign map_addr = IR + 16'd8;
-	assign map_addr = IR;		
+	// assign map_addr = IR;
+
+	mapping_block mapping_func(.IR(IR), .map_addr(map_addr));
+	
 
 	wire [6:0] jump_addr;
 	wire [15:0] inc_addr;
@@ -19,7 +24,7 @@ module controller(clk, IR, z, OPs);
 	assign inc_addr = reg_out+1;
 
 	mux1_control_unit mux1(.map_addr(map_addr), .jump_addr(jump_addr), .inc_addr(inc_addr), .reg_in(mux_out), .select(addr_select));
-	reg_rst_load register(.clk(clk), .data_in(mux_out), .data_out(reg_out), .load_enable(1), .reset(0));
+	cu_reg_rst_load register(.clk(clk), .data_in(mux_out), .data_out(reg_out), .load_enable(1), .reset(0));
 	
 	wire [1:0] condition;
 	wire BT;
