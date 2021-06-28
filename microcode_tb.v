@@ -5,7 +5,7 @@ module microcode_tb;
 	reg [15:0] reg_out;
 	wire [1:0] condition;
 	wire BT;
-	wire [56:0] OPs;
+	wire [58:0] OPs;
 	wire [6:0] jump_addr;
 	
 	microcode micromemory(.reg_out(reg_out), 
