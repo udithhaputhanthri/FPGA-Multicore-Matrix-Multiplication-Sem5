@@ -27,7 +27,9 @@ module top_tb;
      wire [15:0] TP2;
      wire [15:0] TP3;
      wire [15:0] COUNT;
-	  wire LDN;
+     wire [15:0] AC;
+     wire [15:0] TR;
+     wire [15:0] ALU;
      
 
      wire DREAD;
@@ -71,7 +73,9 @@ module top_tb;
         .tp2_disp(TP2),
         .tp3_disp(TP3),
         .count_disp(COUNT),
-		  .ldn_disp(LDN)
+        .ac_disp(AC),
+        .tr_disp(TR),
+        .alu_disp(ALU)
     );
 
 

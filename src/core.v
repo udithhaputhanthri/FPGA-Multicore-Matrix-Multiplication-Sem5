@@ -30,7 +30,10 @@ module core #(parameter core_id = 0) (
     output [15:0]tp2_disp,
     output [15:0]tp3_disp,
     output [15:0]count_disp, 
-	 output ldn_disp
+	 output ldn_disp,
+     output [15:0] ac_disp,
+     output [15:0] tr_disp,
+     output [15:0] alu_disp
 );
 // wire [15:0] test_out_1;
 // wire [15:0] test_out_2;
@@ -217,7 +220,9 @@ assign tp2_disp = tp2_out;
 assign tp3_disp = tp3_out;
 assign count_disp = count_out;
 assign ldn_disp = LDN;
-
+assign ac_disp = ac_out;
+assign tr_disp = tr_out;
+assign alu_disp = alu_out;
 
 assign corrected_clk_disp = corrected_clk;
 
