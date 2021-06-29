@@ -19,12 +19,10 @@ module controller(clk, IR, z, OPs); // implement OPs -> Control Signals!!!
 
 	microcode micromemory(.reg_out(reg_out), .condition(condition), .BT(BT), .OPs(OPs), .jump_addr(jump_addr));// implement !!!-> kara yako
 
-	
 	assign inc_addr = reg_out+1;
 	
-	
-	wire [15:0] logic_in;
-	mux2_ControlUnit mux2(.z(z), .select(condition), .logic_in(logic_in));
+	wire logic_in; // chekkakkakkak
+	mux2_ControlUnit mux2(.z(z), .select(condition), .logic_in(logic_in)); // checkkkkkkk!!!!!!
 	
 	//BT, logic_in, outs -> S1, S0
 	

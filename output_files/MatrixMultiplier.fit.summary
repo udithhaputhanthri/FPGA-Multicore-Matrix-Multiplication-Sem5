@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu Mar 18 21:02:58 2021
+Fitter Status : Successful - Thu Jun 10 12:53:18 2021
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : MatrixMultiplier
 Top-level Entity Name : microcode
 Family : Cyclone IV E
 Device : EP4CE6F17C6
 Timing Models : Final
-Total logic elements : 209 / 6,272 ( 3 % )
-    Total combinational functions : 209 / 6,272 ( 3 % )
+Total logic elements : 0 / 6,272 ( 0 % )
+    Total combinational functions : 0 / 6,272 ( 0 % )
     Dedicated logic registers : 0 / 6,272 ( 0 % )
 Total registers : 0
 Total pins : 86 / 180 ( 48 % )
