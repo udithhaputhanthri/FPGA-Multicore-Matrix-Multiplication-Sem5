@@ -20,16 +20,17 @@ module top(
      output [15:0] pc_disp,
      output inc_pc_disp,
      output lddr_disp,
-    output n_disp,
-    output c_disp,
-    output ic_disp,
-    output ie_disp,
-    output i_disp,
-    output j_disp,
-    output tp1_disp,
-    output tp2_disp,
-    output tp3_disp,
-    output count_disp
+    output [15:0]n_disp,
+    output [15:0]c_disp,
+    output [15:0]ic_disp,
+    output [15:0]ie_disp,
+    output [15:0]i_disp,
+    output [15:0]j_disp,
+    output [15:0]tp1_disp,
+    output [15:0]tp2_disp,
+    output [15:0]tp3_disp,
+    output [15:0]count_disp,
+	 output ldn_disp
 );
 
 
@@ -56,17 +57,17 @@ wire corrected_clk_disp_temp;
 wire [15:0] pc_disp_temp;
 wire inc_pc_disp_temp;
 wire lddr_disp_temp;
-wire n_disp_temp;
-wire c_disp_temp;
-wire ic_disp_temp;
-wire ie_disp_temp;
-wire i_disp_temp;
-wire j_disp_temp;
-wire tp1_disp_temp;
-wire tp2_disp_temp;
-wire tp3_disp_temp;
-wire count_disp_temp;
-
+wire [15:0]n_disp_temp;
+wire [15:0]c_disp_temp;
+wire [15:0]ic_disp_temp;
+wire [15:0]ie_disp_temp;
+wire [15:0]i_disp_temp;
+wire [15:0]j_disp_temp;
+wire [15:0]tp1_disp_temp;
+wire [15:0]tp2_disp_temp;
+wire [15:0]tp3_disp_temp;
+wire [15:0]count_disp_temp;
+wire ldn_disp_temp;
 
 
 assign dmem_disp =  dmem_out;
@@ -94,6 +95,7 @@ assign tp1_disp =  tp1_disp_temp;
 assign tp2_disp = tp2_disp_temp;
 assign tp3_disp = tp3_disp_temp;
 assign count_disp = count_disp_temp;
+assign ldn_disp= ldn_disp_temp;
 
 instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in));
 
@@ -104,7 +106,7 @@ core processor(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem
 .ic_disp(ic_disp_temp), .ie_disp(ie_disp_temp),
  .i_disp(i_disp_temp), .j_disp(j_disp_temp),
  .tp1_disp(tp1_disp_temp), .tp2_disp(tp2_disp_temp),
- .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp) 
+ .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp) 
  );
 
 

@@ -1,4 +1,4 @@
-module core #(parameter core_id = 1) (
+module core #(parameter core_id = 0) (
     input clk,  //Corrected clock
     input START, 
     input RESET, 
@@ -20,16 +20,17 @@ module core #(parameter core_id = 1) (
     output [15:0] pc_disp,
     output inc_pc_disp,
     output lddr_disp,
-    output n_disp,
-    output c_disp,
-    output ic_disp,
-    output ie_disp,
-    output i_disp,
-    output j_disp,
-    output tp1_disp,
-    output tp2_disp,
-    output tp3_disp,
-    output count_disp
+    output [15:0]n_disp,
+    output [15:0]c_disp,
+    output [15:0]ic_disp,
+    output [15:0]ie_disp,
+    output [15:0]i_disp,
+    output [15:0]j_disp,
+    output [15:0]tp1_disp,
+    output [15:0]tp2_disp,
+    output [15:0]tp3_disp,
+    output [15:0]count_disp, 
+	 output ldn_disp
 );
 // wire [15:0] test_out_1;
 // wire [15:0] test_out_2;
@@ -215,6 +216,8 @@ assign tp1_disp =  tp1_out;
 assign tp2_disp = tp2_out;
 assign tp3_disp = tp3_out;
 assign count_disp = count_out;
+assign ldn_disp = LDN;
+
 
 assign corrected_clk_disp = corrected_clk;
 
