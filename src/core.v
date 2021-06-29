@@ -41,7 +41,7 @@ module core #(parameter core_id = 0) (
 // wire [15:0] test_out_2;
 // wire [15:0] test_out_3;
 wire corrected_clk;
-clock_corrector_new clock_corrector(.start(START), .clk(clk), .corrected_clk(corrected_clk));
+clock_corrector_new clock_corrector(.start(START), .clk(clk), .end_signal(end_i), .corrected_clk(corrected_clk));
 
 
 //buffer MEMBUSD_buf(.data_in(test_out_1), .select(MEMBUSD), .data_out(bus));

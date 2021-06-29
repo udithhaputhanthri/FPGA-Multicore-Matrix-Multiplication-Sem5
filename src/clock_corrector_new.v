@@ -1,6 +1,7 @@
 module clock_corrector_new(
     input start, 
     input clk,
+    input end_signal,
 	output corrected_clk
 );
 
@@ -15,7 +16,7 @@ module clock_corrector_new(
 				p <= 1;
 		 end
 	 
-    assign corrected_clk = p ? clk : 0;
+    assign corrected_clk = (p && !end_signal) ? clk : 0;
 
 
 endmodule
