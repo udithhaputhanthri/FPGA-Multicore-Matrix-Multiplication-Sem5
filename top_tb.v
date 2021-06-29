@@ -30,6 +30,8 @@ module top_tb;
      wire [15:0] AC;
      wire [15:0] TR;
      wire [15:0] ALU;
+	  wire Z;
+	  wire END_INC;
      
 
      wire DREAD;
@@ -75,7 +77,9 @@ module top_tb;
         .count_disp(COUNT),
         .ac_disp(AC),
         .tr_disp(TR),
-        .alu_disp(ALU)
+        .alu_disp(ALU),
+		  .z_disp(Z),
+		  .endinc_disp(END_INC)
     );
 
 

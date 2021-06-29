@@ -33,7 +33,9 @@ module top(
 	 output ldn_disp,
      output [15:0] ac_disp,
      output [15:0] tr_disp,
-     output [15:0] alu_disp
+     output [15:0] alu_disp,
+	  output z_disp,
+	  output endinc_disp
 );
 
 
@@ -74,6 +76,8 @@ wire ldn_disp_temp;
 wire [15:0] ac_disp_temp;
 wire [15:0] tr_disp_temp;
 wire [15:0] alu_disp_temp;
+wire z_disp_temp;
+wire endinc_disp_temp;
 
 
 assign dmem_disp =  dmem_out;
@@ -105,6 +109,8 @@ assign ldn_disp= ldn_disp_temp;
 assign ac_disp = ac_disp_temp;
 assign tr_disp = tr_disp_temp;
 assign alu_disp = alu_disp_temp;
+assign z_disp= z_disp_temp;
+assign endinc_disp= endinc_disp_temp;
 
 instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in));
 
@@ -116,7 +122,7 @@ core processor(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem
  .i_disp(i_disp_temp), .j_disp(j_disp_temp),
  .tp1_disp(tp1_disp_temp), .tp2_disp(tp2_disp_temp),
  .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp),
- .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp)
+ .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp)
  );
 
 

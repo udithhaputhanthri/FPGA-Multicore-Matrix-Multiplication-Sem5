@@ -33,7 +33,9 @@ module core #(parameter core_id = 0) (
 	 output ldn_disp,
      output [15:0] ac_disp,
      output [15:0] tr_disp,
-     output [15:0] alu_disp
+     output [15:0] alu_disp,
+	  output z_disp,
+	  output endinc_disp
 );
 // wire [15:0] test_out_1;
 // wire [15:0] test_out_2;
@@ -167,16 +169,20 @@ assign operation[2] = ALU2;
 alu ALU(.in_bus(bus), .in_AC(ac_out), .operation(operation), .data_out(alu_out));
 
 // z login
-reg z;
-always @(alu_out)
-    begin
-        if (! alu_out)
-            z <= 1;
-                
-        else
-            z <= 0;
+//reg z;
+//always @(alu_out)
+//    begin
+//        if (! alu_out)
+//            z <= 1;
+//                
+//       else
+//            z <= 0;
         
-    end
+//    end
+
+wire z;
+assign z= ~(ac_out[0]||ac_out[1]||ac_out[2]||ac_out[3]||ac_out[4]||ac_out[5]||ac_out[6]||ac_out[7]||ac_out[8]||ac_out[9]||ac_out[10]||ac_out[11]||ac_out[12]||ac_out[13]||ac_out[14]||ac_out[15]); 
+
     
 
 //Controller
@@ -223,7 +229,8 @@ assign ldn_disp = LDN;
 assign ac_disp = ac_out;
 assign tr_disp = tr_out;
 assign alu_disp = alu_out;
-
 assign corrected_clk_disp = corrected_clk;
+assign z_disp= z;
+assign endinc_disp= INCEND;
 
 endmodule

@@ -38,8 +38,8 @@ module instruction_memory(
             inst_memory[27] = 19 ;   //SUB
             inst_memory[28] = 21 ;   //JNPZ
             inst_memory[29] = 8 ;    //8
-            inst_memory[30] = 15 ;   //MVI
-            inst_memory[31] = 16 ;   //MVIE
+            inst_memory[30] = 16 ;   //MVIE
+            inst_memory[31] = 15 ;   //MVI
             inst_memory[32] = 19 ;   //SUB
             inst_memory[33] = 21 ;   //JNPZ
             inst_memory[34] = 7  ;   //7
