@@ -30,12 +30,12 @@ module core #(parameter core_id = 0) (
     output [15:0]tp2_disp,
     output [15:0]tp3_disp,
     output [15:0]count_disp, 
-	 output ldn_disp,
-     output [15:0] ac_disp,
-     output [15:0] tr_disp,
-     output [15:0] alu_disp,
-	  output z_disp,
-	  output endinc_disp
+    output ldn_disp,
+    output [15:0] ac_disp,
+    output [15:0] tr_disp,
+    output [15:0] alu_disp,
+    output z_disp,
+    output endinc_disp
 );
 // wire [15:0] test_out_1;
 // wire [15:0] test_out_2;

@@ -1,4 +1,4 @@
 
 db/
-
-*.qws
+quartus_files/
+*.bak

@@ -20,7 +20,7 @@ module alu(
 		
 		always @(in_bus or in_AC or operation)
 		begin
-	
+			// How much time does this take?
 			case(operation)
 				pass:data_out = in_bus;
 				mul: data_out = in_AC * in_bus;

@@ -12,7 +12,7 @@ module reg_ac(
         //Control signals
 		
 		
-		localparam k=100; // need to get this externally from memory
+		localparam k= 16'd100; // need to get this externally from memory
 		
 		always @(posedge clk)
             begin

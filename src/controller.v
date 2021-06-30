@@ -21,7 +21,7 @@ module controller(
 	wire [15:0] reg_out;
 	wire [1:0] addr_select;
 
-	assign inc_addr = reg_out+1;
+	assign inc_addr = reg_out+1'b1;
 
 	mux1_control_unit mux1(.map_addr(map_addr), .jump_addr(jump_addr), .inc_addr(inc_addr), .reg_in(mux_out), .select(addr_select));
 	cu_reg_rst_load register(.clk(clk), .data_in(mux_out), .data_out(reg_out), .load_enable(1), .reset(0));
