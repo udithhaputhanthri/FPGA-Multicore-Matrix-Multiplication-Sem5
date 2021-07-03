@@ -15,29 +15,29 @@ module data_memory(
 	assign data_out = memory[address];
 	// assign memory[address] = write ? data_in : 1'bz;
 
-	initial   // Add assembly code here
-        begin
-			memory[0] = 1;
-			memory[1] = 2;
-			memory[2] = 3;
-			memory[3] = 4;
-			memory[4] = 5;
-			memory[5] = 6;
-			memory[6] = 7;
-			memory[7] = 8;
-			memory[8] = 9;
-			memory[100] = 10;
-			memory[101] = 13;
-			memory[102] = 16;
-			memory[103] = 11;
-			memory[104] = 14;
-			memory[105] = 17;
-			memory[106] = 12;
-			memory[107] = 15;
-			memory[108] = 18;
-			memory[999] = 1; // save c 
-			memory[998] = 3; // save n
-		end
+	// initial   // Add assembly code here
+    //     begin
+	// 		memory[0] = 1;
+	// 		memory[1] = 2;
+	// 		memory[2] = 3;
+	// 		memory[3] = 4;
+	// 		memory[4] = 5;
+	// 		memory[5] = 6;
+	// 		memory[6] = 7;
+	// 		memory[7] = 8;
+	// 		memory[8] = 9;
+	// 		memory[100] = 10;
+	// 		memory[101] = 13;
+	// 		memory[102] = 16;
+	// 		memory[103] = 11;
+	// 		memory[104] = 14;
+	// 		memory[105] = 17;
+	// 		memory[106] = 12;
+	// 		memory[107] = 15;
+	// 		memory[108] = 18;
+	// 		memory[999] = 1; // save c 
+	// 		memory[998] = 3; // save n
+	// 	end
 
 	always @(posedge clk) 
     begin

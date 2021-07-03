@@ -1,5 +1,21 @@
 `timescale 1 ns/10 ps 
 module top_tb;
+
+    //For file reading and writing
+	integer data_out; 
+    integer data_file;
+    integer scan_file;
+    integer i;
+    
+
+    //regs used in reading file
+    reg [15:0] captured_data;
+    `define NULL 0 
+    reg [15:0] mem_data;
+	reg [15:0] current_addr = 16'd0;
+    reg [15:0] dmem_size = 16'd1001;
+    reg write_from_tb;
+
     reg clk;
     reg START;
     reg RESET;
@@ -30,13 +46,20 @@ module top_tb;
      wire [15:0] AC;
      wire [15:0] TR;
      wire [15:0] ALU;
-	  wire Z;
-	  wire END_INC;
+	wire Z;
+	wire END_INC;
+
+    wire [15:0] memory_in_addr;
      
 
      wire DREAD;
      wire  DWRITE;
      wire IREAD;
+
+    //Read Data mem to taking data
+    reg [15:0] ar_out_start_addr;
+    reg [15:0] end_addr = 16'd210;
+    reg [1:0] addr_mux_select;
 
     localparam CLK_PERIOD = 10;
 
@@ -50,9 +73,17 @@ module top_tb;
         .START(START),
         .RESET(RESET),
         .END(END),
-		  .dmem_disp(DMEMBUS),
+
+        .addr_mux_select(addr_mux_select),
+        .ar_in(ar_out_start_addr),
+
+        .current_addr(current_addr),
+        .write_from_tb(write_from_tb),
+        .mem_data(mem_data),
+
+		  .dmem_disp(DBUSMEM),  
 		  .imem_disp(IMEMBUS),
-		  .dmem_out_disp(DBUSMEM),
+		  .dmem_out_disp(DMEMBUS),
 		  .ops_disp(OPs),
           .d_read_status(DREAD),
           .d_write_status(DWRITE),
@@ -79,13 +110,89 @@ module top_tb;
         .tr_disp(TR),
         .alu_disp(ALU),
 		  .z_disp(Z),
-		  .endinc_disp(END_INC)
+		  .endinc_disp(END_INC),
+          .memory_in_addr(memory_in_addr)
     );
 
 
     initial begin
-        #10 START = 1; RESET = 0;
-        #10 START = 0; RESET = 0;
+
+        // Reading input data and storing in Data Memory
+        data_file = $fopen("data_in.txt", "r");
+
+        if (data_file == `NULL) begin
+            $display("data_file handle was NULL");
+            $finish;
+        end
+        #10 addr_mux_select <= 1;
+        
+        // while( current_addr < dmem_size) begin
+
+        //     @(posedge clk) begin
+
+        //     scan_file = $fscanf(data_file, "%d\n", captured_data); 
+                
+        //         if (!$feof(data_file)) begin
+        //             #10  mem_data <= captured_data; 
+        //             #5 write_from_tb <=1; 
+        //             #20 write_from_tb <= 0; current_addr <= current_addr + 16'd1;
+        //             $display(mem_data);
+        //             //use captured_data as you would any other wire or reg value;
+        //         end
+        //     end
+
+        // end
+
+        for (current_addr = 0; current_addr < dmem_size; current_addr = current_addr+1 ) begin
+            @(posedge clk) begin
+
+            scan_file = $fscanf(data_file, "%d\n", captured_data); 
+                
+                if (!$feof(data_file)) begin
+                    #10  mem_data <= captured_data; 
+                    #5 write_from_tb <=1; 
+                    #20 write_from_tb <= 0;// current_addr <= current_addr + 16'd1;
+                    $display(mem_data);
+                    //use captured_data as you would any other wire or reg value;
+                end
+            end
+            
+        end
+
+        $fclose(data_file);
+
+        $display("Out of while");
+
+        #10 write_from_tb = 0; addr_mux_select <= 0;
+
+
+        //need to make write_from_tb = 0
+
+
+        //Core operation
+        #10 START = 1; RESET = 0; addr_mux_select = 0; ar_out_start_addr=16'd200;
+        #10 START = 0; RESET = 0; addr_mux_select = 0; ar_out_start_addr=16'd200;
+		  
+		  
+		//Writing output matrix to text
+			#50000 data_out = $fopen("data_out.txt","w");
+            #10 ar_out_start_addr=16'd0; 
+           #10  addr_mux_select <= 2; 
+
+
+			// #5 ar_out_start_addr = 16'd200;
+
+			while( ar_out_start_addr < end_addr) begin
+					 @(posedge clk);
+				 
+					 #50 $fwrite(data_out,"%d\n",DMEMBUS);
+					 #50 ar_out_start_addr <= ar_out_start_addr + 16'd1;  //check AR
+					 #10;
+				
+				end
+
+			#20;
+			$fclose(data_out);
         
     end
 
