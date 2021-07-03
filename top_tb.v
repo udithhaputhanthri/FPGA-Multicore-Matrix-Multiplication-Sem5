@@ -13,7 +13,7 @@ module top_tb;
     `define NULL 0 
     reg [15:0] mem_data;
 	reg [15:0] current_addr = 16'd0;
-    reg [15:0] dmem_size = 16'd1001;
+    reg [15:0] dmem_size = 16'd1000;
     reg write_from_tb;
 
     reg clk;
@@ -58,7 +58,7 @@ module top_tb;
 
     //Read Data mem to taking data
     reg [15:0] ar_out_start_addr;
-    reg [15:0] end_addr = 16'd210;
+    reg [15:0] end_addr = 16'd997;
     reg [1:0] addr_mux_select;
 
     localparam CLK_PERIOD = 10;
@@ -118,7 +118,7 @@ module top_tb;
     initial begin
 
         // Reading input data and storing in Data Memory
-        data_file = $fopen("data_in.txt", "r");
+        data_file = $fopen("../../io_txt_files/data_to_mem.txt", "r");
 
         if (data_file == `NULL) begin
             $display("data_file handle was NULL");
@@ -143,7 +143,7 @@ module top_tb;
 
         // end
 
-        for (current_addr = 0; current_addr < dmem_size; current_addr = current_addr+1 ) begin
+        for (current_addr = 0; current_addr < dmem_size+1; current_addr = current_addr+1 ) begin
             @(posedge clk) begin
 
             scan_file = $fscanf(data_file, "%d\n", captured_data); 
@@ -170,12 +170,12 @@ module top_tb;
 
 
         //Core operation
-        #10 START = 1; RESET = 0; addr_mux_select = 0; ar_out_start_addr=16'd200;
-        #10 START = 0; RESET = 0; addr_mux_select = 0; ar_out_start_addr=16'd200;
+        #200000 START = 1; RESET = 0; addr_mux_select = 0;
+        #10 START = 0; RESET = 0; addr_mux_select = 0;
 		  
 		  
 		//Writing output matrix to text
-			#50000 data_out = $fopen("data_out.txt","w");
+			#50000 data_out = $fopen("../../io_txt_files/results_from_mem.txt","w");
             #10 ar_out_start_addr=16'd0; 
            #10  addr_mux_select <= 2; 
 
