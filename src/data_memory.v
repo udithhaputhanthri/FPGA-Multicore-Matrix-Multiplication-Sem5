@@ -7,7 +7,7 @@ module data_memory(
 	output [15:0] data_out
 	); 
 	
-	reg [15:0] memory [0:999];  //16 bit memory with 100 locations
+	reg [15:0] memory [0:999];  //16 bit memory with 1000 locations
 	
 	//Implement this as a combinational logic (always at read)
 

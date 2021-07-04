@@ -198,6 +198,8 @@ module top_tb;
             $stop;
     end
 
+    // always @(negedge DWRITE) 
+	// 	$display(DBUSMEM); 
 
 
 endmodule
