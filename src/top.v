@@ -154,13 +154,36 @@ data_memory DM (.write(write_to_data_mem), .read(read_MD), .clk(clk), .address(d
 
 instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in));
 
-core processor(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem_in(imem_in) , .dmem_out(dmem_out), .ar_out(ar_out), .read_MD(read_MD), .read_MI(read_MI), .write_MD(write_MD), .end_i(END), .micro_ops(OPs), .ir_out_disp(ir_out_disp_temp), .dr_out_disp(dr_out_disp_temp), .bus_disp(bus_disp_temp), .ar_disp(ar_disp_temp), .corrected_clk_disp(corrected_clk_disp_temp), .pc_disp(pc_disp_temp), .inc_pc_disp(inc_pc_disp_temp), .lddr_disp(lddr_disp_temp),
-.n_disp(n_disp_temp), .c_disp(c_disp_temp),
-.ic_disp(ic_disp_temp), .ie_disp(ie_disp_temp),
- .i_disp(i_disp_temp), .j_disp(j_disp_temp),
- .tp1_disp(tp1_disp_temp), .tp2_disp(tp2_disp_temp),
- .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp),
- .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp)
+// core processor1(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem_in(imem_in) , .dmem_out(dmem_out), .ar_out(ar_out), .read_MD(read_MD), .read_MI(read_MI), .write_MD(write_MD), .end_i(END), .micro_ops(OPs), .ir_out_disp(ir_out_disp_temp), .dr_out_disp(dr_out_disp_temp), .bus_disp(bus_disp_temp), .ar_disp(ar_disp_temp), .corrected_clk_disp(corrected_clk_disp_temp), .pc_disp(pc_disp_temp), .inc_pc_disp(inc_pc_disp_temp), .lddr_disp(lddr_disp_temp),
+// .n_disp(n_disp_temp), .c_disp(c_disp_temp),
+// .ic_disp(ic_disp_temp), .ie_disp(ie_disp_temp),
+//  .i_disp(i_disp_temp), .j_disp(j_disp_temp),
+//  .tp1_disp(tp1_disp_temp), .tp2_disp(tp2_disp_temp),
+//  .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp),
+//  .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp)
+//  );
+
+// core #(.core_id(0)) processor1 (.clk(clk), .START(START), .RESET(RESET), 
+// .read_MI(read_MI), .imem_in(imem_in),
+// .dmem_in(dmem_in), .dmem_out(dmem_out), 
+// .ar_out(ar_out), .read_MD(read_MD),  .write_MD(write_MD), 
+
+// .end_i(END), .micro_ops(OPs), .ir_out_disp(ir_out_disp_temp), .dr_out_disp(dr_out_disp_temp), .bus_disp(bus_disp_temp), .ar_disp(ar_disp_temp), .corrected_clk_disp(corrected_clk_disp_temp), .pc_disp(pc_disp_temp), .inc_pc_disp(inc_pc_disp_temp), .lddr_disp(lddr_disp_temp),
+// .n_disp(n_disp_temp), .c_disp(c_disp_temp),
+// .ic_disp(ic_disp_temp), .ie_disp(ie_disp_temp),
+//  .i_disp(i_disp_temp), .j_disp(j_disp_temp),
+//  .tp1_disp(tp1_disp_temp), .tp2_disp(tp2_disp_temp),
+//  .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp),
+//  .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp)
+//  );
+
+
+ core #(.core_id(1)) processor2 (.clk(clk), .START(START), .RESET(RESET), 
+.read_MI(read_MI), .imem_in(imem_in),
+.dmem_in(dmem_in), .dmem_out(dmem_out), 
+.ar_out(ar_out), .read_MD(read_MD),  .write_MD(write_MD), 
+
+.end_i(END)
  );
 
 
