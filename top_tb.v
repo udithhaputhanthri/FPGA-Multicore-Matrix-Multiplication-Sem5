@@ -152,7 +152,7 @@ module top_tb;
                     #10  mem_data <= captured_data; 
                     #5 write_from_tb <=1; 
                     #20 write_from_tb <= 0;// current_addr <= current_addr + 16'd1;
-                    $display(mem_data);
+                    //$display(mem_data);
                     //use captured_data as you would any other wire or reg value;
                 end
             end
@@ -161,7 +161,7 @@ module top_tb;
 
         $fclose(data_file);
 
-        $display("Out of while");
+        
 
         #10 write_from_tb = 0; addr_mux_select <= 0;
 
@@ -193,8 +193,12 @@ module top_tb;
 
 			#20;
 			$fclose(data_out);
+			
         
     end
+	 
+	 always @(posedge DWRITE)
+				$display(DR);
 
 
 
