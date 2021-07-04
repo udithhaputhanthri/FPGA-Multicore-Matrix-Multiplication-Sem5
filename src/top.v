@@ -59,9 +59,15 @@ wire [15:0] dmem_in;
 wire [15:0] imem_in;
 wire [15:0] dmem_out;
 wire [15:0] ar_out;
+// core 2
+wire [15:0] dmem_in2;
+wire [15:0] dmem_out2;
+wire [15:0] ar_out2;
+
 
 //Control signals
 wire read_MD, read_MI, write_MD;
+wire read_MD2, write_MD2; //core 2
 
 //added for testing purposes
 wire [48:0] OPs;
@@ -150,7 +156,12 @@ tb_mux  data_mem_write_mux(.in_1(write_from_tb), .in_2(write_MD), .mux_out(write
 wire [15:0] data_for_mem;
 tb_mux_mem_data mem_data_select_mux(.in_1(mem_data), .in_2(dmem_out), .mem_data_select(write_from_tb), .mux_out(data_for_mem));
 
-data_memory DM (.write(write_to_data_mem), .read(read_MD), .clk(clk), .address(d_mem_addr), .data_in(data_for_mem), .data_out(dmem_in));
+// data_memory DM (.write(write_to_data_mem), .read(read_MD), .clk(clk), .address(d_mem_addr), .data_in(data_for_mem), .data_out(dmem_in));
+data_memory_2_port DM_2(.clk(clk),
+    .we_a(write_to_data_mem), .addr_a(d_mem_addr), .data_in_a(data_for_mem), .data_out_a(dmem_in),
+    .we_b(write_MD2), .addr_b(ar_out2), .data_in_b(dmem_out2), .data_out_b(dmem_in2)
+    );
+
 
 instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in));
 
@@ -178,12 +189,24 @@ instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in
 //  );
 
 
- core #(.core_id(1)) processor2 (.clk(clk), .START(START), .RESET(RESET), 
+ core #(.core_id(0)) processor1 (.clk(clk), .START(START), .RESET(RESET), 
 .read_MI(read_MI), .imem_in(imem_in),
 .dmem_in(dmem_in), .dmem_out(dmem_out), 
 .ar_out(ar_out), .read_MD(read_MD),  .write_MD(write_MD), 
 
 .end_i(END)
+ );
+
+// not connected ar_out address and read_MI signal for Instruction memory
+// read_MD is redudant
+wire END2;
+ core #(.core_id(1)) processor2 (.clk(clk), .START(START), .RESET(RESET), 
+.imem_in(imem_in),
+.dmem_in(dmem_in2), .dmem_out(dmem_out2), 
+.write_MD(write_MD2), 
+.ar_out(ar_out2),
+
+.end_i(END2)
  );
 
 
