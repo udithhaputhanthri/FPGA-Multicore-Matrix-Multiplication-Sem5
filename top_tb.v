@@ -118,7 +118,8 @@ module top_tb;
     initial begin
 
         // Reading input data and storing in Data Memory
-        data_file = $fopen("../../io_txt_files/data_to_mem.txt", "r");
+        // Z:/Documents/Github/FPGA-Multicore-Matrix-Multiplication-Sem5/io_txt_files
+        data_file = $fopen("Z:/Documents/Github/FPGA-Multicore-Matrix-Multiplication-Sem5/io_txt_files/data_to_mem.txt", "r");
 
         if (data_file == `NULL) begin
             $display("data_file handle was NULL");
@@ -175,7 +176,7 @@ module top_tb;
 		  
 		  
 		//Writing output matrix to text
-			#50000 data_out = $fopen("../../io_txt_files/results_from_mem.txt","w");
+			#50000 data_out = $fopen("../../../io_txt_files/results_from_mem.txt","w");
             #10 ar_out_start_addr=16'd0; 
            #10  addr_mux_select <= 2; 
 
@@ -193,7 +194,8 @@ module top_tb;
 
 			#20;
 			$fclose(data_out);
-        
+            #20;
+            $stop;
     end
 
 
