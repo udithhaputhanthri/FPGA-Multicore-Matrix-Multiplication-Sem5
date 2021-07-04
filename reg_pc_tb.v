@@ -8,7 +8,7 @@ module reg_pc_tb;
     reg load_enable;
     reg reset;
     
-    wire [15:0] data_in;
+    reg [15:0] data_in;
 	wire [15:0] data_out;
 
 

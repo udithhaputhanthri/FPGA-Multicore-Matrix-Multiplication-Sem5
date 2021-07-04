@@ -1,2 +1,6 @@
 *.bak
 *.swp
+
+quartus_files/db/
+
+quartus_files/
