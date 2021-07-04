@@ -88,6 +88,9 @@ module top_tb;
         #10 START = 0; RESET = 0;
         
     end
+	 
+	 always @(negedge DWRITE)
+		$display(DBUSMEM);
 
 
 
