@@ -125,42 +125,38 @@ assign z_disp= z_disp_temp;
 assign endinc_disp= endinc_disp_temp;
 
 
-wire [15:0] d_mem_addr;
-
-
-assign memory_in_addr = d_mem_addr;
-
-
-
-//intermediate wires for 2 mux
-
-// input [15:0] current_addr,
-//     input write_from_tb,
-//     input [15:0] mem_data;
-
-dmem_mux data_mem_mux(.in_core(ar_out), .in_d_write(current_addr), .in_d_read(ar_in), .addr_mux_select(addr_mux_select), .mux_out(d_mem_addr));
-
-
-// tb_mux  ar_mux(.in_1(ar_in), .in_2(ar_out), .addr_mux_select(addr_mux_select), .mux_out(d_mem_addr));
-
-
-//need to complete write enable thing
-wire write_to_data_mem;
-assign d_write_status_all = write_to_data_mem;
-
-tb_mux  data_mem_write_mux(.in_1(write_from_tb), .in_2(write_MD), .mux_out(write_to_data_mem));
-
-// tb_mux data_mem_addr_mux(.in_1(current_addr), .in_2(ar_out), .addr_mux_select(), .mux_out());
-
 instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in));
 
-//need to define a mux for mem_data and dmem_out
-wire [15:0] data_for_mem;
-tb_mux_mem_data mem_data_select_mux(.in_1(mem_data), .in_2(dmem_out), .mem_data_select(write_from_tb), .mux_out(data_for_mem));
+wire [15:0] d_mem_addr;
+assign memory_in_addr = d_mem_addr;
+dmem_mux data_mem_mux(.in_core(ar_out), .in_d_write(current_addr), .in_d_read(ar_in), 
+.addr_mux_select(addr_mux_select), .mux_out(d_mem_addr));
 
-data_memory DM (.write(write_to_data_mem), .read(read_MD), .clk(clk), .address(d_mem_addr), .data_in(data_for_mem), .data_out(dmem_in));
 
-core processor(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem_in(imem_in) , .dmem_out(dmem_out), .ar_out(ar_out), .read_MD(read_MD), .read_MI(read_MI), .write_MD(write_MD), .end_i(END), .micro_ops(OPs), .ir_out_disp(ir_out_disp_temp), .dr_out_disp(dr_out_disp_temp), .bus_disp(bus_disp_temp), .ar_disp(ar_disp_temp), .corrected_clk_disp(corrected_clk_disp_temp), .pc_disp(pc_disp_temp), .inc_pc_disp(inc_pc_disp_temp), .lddr_disp(lddr_disp_temp),
+
+// //need to complete write enable thing
+// wire write_to_data_mem;
+// assign d_write_status_all = write_to_data_mem;
+// tb_mux  data_mem_write_mux(.in_1(write_from_tb), .in_2(write_MD), .mux_out(write_to_data_mem));
+
+// //need to define a mux for mem_data and dmem_out
+// wire [15:0] data_for_mem;
+// tb_mux_mem_data mem_data_select_mux(.in_1(mem_data), .in_2(dmem_out), .mem_data_select(write_from_tb), .mux_out(data_for_mem));
+
+// data_memory DM (.write(write_to_data_mem), .read(read_MD), .clk(clk), .address(d_mem_addr), .data_in(data_for_mem), .data_out(dmem_in));
+data_memory DM (.write(write_MD), .read(read_MD), .clk(clk), .address(d_mem_addr), .data_in(dmem_out), .data_out(dmem_in));
+
+// correct and verified memory
+// data_memory DM (.write(write_MD), .read(read_MD), .clk(clk), .address(ar_out), .data_in(dmem_out), .data_out(dmem_in));
+
+core processor(.clk(clk), .START(START), .RESET(RESET), 
+.dmem_in(dmem_in), .imem_in(imem_in) , .dmem_out(dmem_out), 
+.ar_out(ar_out), .read_MD(read_MD), .read_MI(read_MI), 
+.write_MD(write_MD), 
+
+.end_i(END), 
+
+.micro_ops(OPs), .ir_out_disp(ir_out_disp_temp), .dr_out_disp(dr_out_disp_temp), .bus_disp(bus_disp_temp), .ar_disp(ar_disp_temp), .corrected_clk_disp(corrected_clk_disp_temp), .pc_disp(pc_disp_temp), .inc_pc_disp(inc_pc_disp_temp), .lddr_disp(lddr_disp_temp),
 .n_disp(n_disp_temp), .c_disp(c_disp_temp),
 .ic_disp(ic_disp_temp), .ie_disp(ie_disp_temp),
  .i_disp(i_disp_temp), .j_disp(j_disp_temp),
@@ -168,8 +164,5 @@ core processor(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem
  .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp),
  .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp)
  );
-
-
-
 
 endmodule

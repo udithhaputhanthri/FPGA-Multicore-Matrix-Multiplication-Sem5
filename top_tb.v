@@ -168,42 +168,37 @@ module top_tb;
 //
 //        
 //
-//        #10 write_from_tb = 0; addr_mux_select <= 0;
+        write_from_tb = 0; addr_mux_select <= 0;
 
 
         //need to make write_from_tb = 0
-
 
         //Core operation
         #200000 START = 1; RESET = 0; addr_mux_select = 0;
         #10 START = 0; RESET = 0; addr_mux_select = 0;
 		  
 		  
-		//Writing output matrix to text
-			#50000 data_out = $fopen("../../io_txt_files/results_from_mem.txt","w");
-            #10 ar_out_start_addr=16'd0; 
-           #10  addr_mux_select <= 2; 
+		// Writing output matrix to text
+        while (END!=1) #100;
+        data_out = $fopen("../../../io_txt_files/results_from_mem.txt","w");
+        #10 ar_out_start_addr=16'd0; 
+        #10 addr_mux_select <= 2; 
 
+        while(ar_out_start_addr < end_addr) 
+            begin 
+                #50 $fwrite(data_out,"%d\n",DMEMBUS);
+                #50 ar_out_start_addr <= ar_out_start_addr + 16'd1;  //check AR
+            end
 
-			// #5 ar_out_start_addr = 16'd200;
-
-			while( ar_out_start_addr < end_addr) begin
-					 @(posedge clk);
-				 
-					 #50 $fwrite(data_out,"%d\n",DMEMBUS);
-					 #50 ar_out_start_addr <= ar_out_start_addr + 16'd1;  //check AR
-					 #10;
-				
-				end
-
-			#20;
-			$fclose(data_out);
-			
+        #20;
+        $fclose(data_out);
+        #20;
+        $stop;
         
     end
 	 
-	 always @(posedge DWRITE)
-				$display(DR);
+	always @(posedge DWRITE)
+		$display(DR);
 
 
 
