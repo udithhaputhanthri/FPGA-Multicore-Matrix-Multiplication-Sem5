@@ -46,7 +46,8 @@ module top(
      output [15:0] alu_disp,
 	  output z_disp,
 	  output endinc_disp,
-      output [15:0] memory_in_addr
+      output [15:0] memory_in_addr,
+		output d_write_status_all
 );
 
 
@@ -145,6 +146,8 @@ dmem_mux data_mem_mux(.in_core(ar_out), .in_d_write(current_addr), .in_d_read(ar
 
 //need to complete write enable thing
 wire write_to_data_mem;
+assign d_write_status_all = write_to_data_mem;
+
 tb_mux  data_mem_write_mux(.in_1(write_from_tb), .in_2(write_MD), .mux_out(write_to_data_mem));
 
 // tb_mux data_mem_addr_mux(.in_1(current_addr), .in_2(ar_out), .addr_mux_select(), .mux_out());

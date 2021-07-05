@@ -15,8 +15,61 @@ module data_memory(
 	assign data_out = memory[address];
 	// assign memory[address] = write ? data_in : 1'bz;
 
-	// initial   // Add assembly code here
-    //     begin
+	 initial   // Add assembly code here
+         begin
+			
+			memory[0] = 1;
+			memory[1] = 2;
+			memory[2] = 3;
+			memory[3] = 4;
+			memory[4] = 4;
+			memory[5] = 4;
+			memory[6] = 5;
+			memory[7] = 6;
+			memory[8] = 4;
+			memory[9] = 4;
+			memory[10] = 7;
+			memory[11] = 8;
+			memory[12] = 9;
+			memory[13] = 3;
+			memory[14] = 2;
+			memory[15] = 7;
+			memory[16] = 8;
+			memory[17] = 9;
+			memory[18] = 3;
+			memory[19] = 2;
+			memory[20] = 7;
+			memory[21] = 8;
+			memory[22] = 9;
+			memory[23] = 3;
+			memory[24] = 2;
+			memory[332] = 1;
+			memory[333] = 1;
+			memory[334] = 1;
+			memory[335] = 7;
+			memory[336] = 7;
+			memory[337] = 1;
+			memory[338] = 8;
+			memory[339] = 8;
+			memory[340] = 8;
+			memory[341] = 5;
+			memory[342] = 1;
+			memory[343] = 1;
+			memory[344] = 1;
+			memory[345] = 4;
+			memory[346] = 9;
+			memory[347] = 3;
+			memory[348] = 3;
+			memory[349] = 3;
+			memory[350] = 4;
+			memory[351] = 4;
+			memory[352] = 1;
+			memory[353] = 1;
+			memory[354] = 2;
+			memory[355] = 2;
+			memory[356] = 2;
+			memory[999] = 1;// save c 
+			memory[998] = 5;// save n 
 	// 		memory[0] = 1;
 	// 		memory[1] = 2;
 	// 		memory[2] = 3;
@@ -37,7 +90,7 @@ module data_memory(
 	// 		memory[108] = 18;
 	// 		memory[999] = 1; // save c 
 	// 		memory[998] = 3; // save n
-	// 	end
+	 	end
 
 	always @(posedge clk) 
     begin
