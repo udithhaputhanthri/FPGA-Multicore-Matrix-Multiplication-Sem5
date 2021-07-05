@@ -81,7 +81,7 @@ module top_tb;
         .write_from_tb(write_from_tb),
         .mem_data(mem_data),
 
-		  .dmem_disp(DBUSMEM),  
+		  .dmem_disp(DBUSMEM), 
 		  .imem_disp(IMEMBUS),
 		  .dmem_out_disp(DMEMBUS),
 		  .ops_disp(OPs),

@@ -27,7 +27,7 @@ module alu(
 				add: data_out = in_AC + in_bus;
 				sub: data_out = in_AC - in_bus;
 				int_div: data_out= (in_AC - in_AC % in_bus)/in_bus;
-				is_mod: data_out= in_AC % in_bus; //correct this- udith
+				is_mod: data_out= ((in_AC % in_bus) != 0);
 				
 				default : data_out = in_bus;
 			endcase
