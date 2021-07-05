@@ -119,55 +119,36 @@ module top_tb;
 
     initial begin
 
-//
-//        // Reading input data and storing in Data Memory
-//        data_file = $fopen("../../io_txt_files/data_to_mem.txt", "r");
-//
-//        if (data_file == `NULL) begin
-//            $display("data_file handle was NULL");
-//            $finish;
-//        end
-//		  
-//		  
-//        #10 addr_mux_select <= 1;
-//        
-//        // while( current_addr < dmem_size) begin
-//
-//        //     @(posedge clk) begin
-//
-//        //     scan_file = $fscanf(data_file, "%d\n", captured_data); 
-//                
-//        //         if (!$feof(data_file)) begin
-//        //             #10  mem_data <= captured_data; 
-//        //             #5 write_from_tb <=1; 
-//        //             #20 write_from_tb <= 0; current_addr <= current_addr + 16'd1;
-//        //             $display(mem_data);
-//        //             //use captured_data as you would any other wire or reg value;
-//        //         end
-//        //     end
-//
-//        // end
-//
-//        for (current_addr = 0; current_addr < dmem_size+1; current_addr = current_addr+1 ) begin
-//            @(posedge clk) begin
-//
-//            scan_file = $fscanf(data_file, "%d\n", captured_data); 
-//                
-//                if (!$feof(data_file)) begin
-//                    #10  mem_data <= captured_data; 
-//                    #5 write_from_tb <=1; 
-//                    #20 write_from_tb <= 0;// current_addr <= current_addr + 16'd1;
-//                    $display(mem_data);
-//                    //use captured_data as you would any other wire or reg value;
-//                end
-//            end
-//            
-//        end
-//
-//        $fclose(data_file);
-//
-//        
-//
+       // Reading input data and storing in Data Memory
+       data_file = $fopen("../../../io_txt_files/data_to_mem.txt", "r");
+
+       if (data_file == `NULL) begin
+           $display("data_file handle was NULL");
+           $finish;
+       end  
+		  
+       #10 addr_mux_select <= 1;
+
+       for (current_addr = 0; current_addr < dmem_size+1; current_addr = current_addr+1 ) begin
+           @(posedge clk) begin
+
+           scan_file = $fscanf(data_file, "%d\n", captured_data); 
+               
+               if (!$feof(data_file)) begin
+                   #10  mem_data <= captured_data; 
+                   #5 write_from_tb <=1; 
+                   #20 write_from_tb <= 0;// current_addr <= current_addr + 16'd1;
+                   $display(mem_data);
+                   //use captured_data as you would any other wire or reg value;
+               end
+           end
+           
+       end
+
+       $fclose(data_file);
+
+       
+
         write_from_tb = 0; addr_mux_select <= 0;
 
 

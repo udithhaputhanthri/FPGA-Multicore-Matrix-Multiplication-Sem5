@@ -2,6 +2,8 @@
 import numpy as np
 import argparse
 
+from numpy.core.fromnumeric import size
+
 def pad_matrix(matrix1, matrix2, n):
   n1, n2 = matrix1.shape
   n3, n4 =  matrix2.shape
@@ -44,8 +46,8 @@ def save_matrix(matrix1, matrix2, mem_size=1000, K=332, n=3, c=1, write_filename
 
 
 parser = argparse.ArgumentParser(description='Write matrices')
-parser.add_argument('--matrix1', type=str)
-parser.add_argument('--matrix2', type=str)
+# parser.add_argument('--matrix1', type=str)
+# parser.add_argument('--matrix2', type=str)
 parser.add_argument('--mem_size', type=int, default= 1000)
 parser.add_argument('--K', type= int, default= 332)
 parser.add_argument('--n', type= int)
@@ -54,7 +56,9 @@ parser.add_argument('--filename', type=str, default= 'data_to_mem.txt')
 
 args = parser.parse_args()
 
-matrix1 = eval(args.matrix1)
-matrix2 = eval(args.matrix2)
 
-save_matrix(matrix1, matrix2, args.mem_size, args.K, args.n, args.c, args.filename)
+matrix1 = np.random.randint(10, size= (args.n,args.n))
+matrix2 = np.random.randint(10, size= (args.n,args.n))
+
+
+save_matrix(matrix1,matrix2,args.mem_size, args.K, args.n, args.c, args.filename)
