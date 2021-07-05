@@ -1,2 +1,7 @@
 *.bak
 *.swp
+.vscode
+quartus_files/db/
+quartus_files/
+io_txt_files/data_to_mem.txt
+io_txt_files/results_from_mem.txt
