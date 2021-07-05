@@ -57,8 +57,8 @@ parser.add_argument('--filename', type=str, default= 'data_to_mem.txt')
 args = parser.parse_args()
 
 
-matrix1 = np.random.randint(100, size= (args.n,args.n))
-matrix2 = np.random.randint(100, size= (args.n,args.n))
+matrix1 = np.random.randint(20, size= (args.n,args.n))
+matrix2 = np.random.randint(20, size= (args.n,args.n))
 
 
 save_matrix(matrix1,matrix2,args.mem_size, args.K, args.n, args.c, args.filename)
