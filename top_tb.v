@@ -7,7 +7,8 @@ module top_tb;
 	 wire [15:0] DMEMBUS;
 	 wire [15:0] IMEMBUS;
 	 wire [15:0] DBUSMEM;
-	 wire [48:0] OPs;
+	 wire [50:0] OPs;
+	 wire [48:0] OPs_valid;
      wire [15:0] IR;
      wire [15:0] DR;
      wire [15:0] BUS;
@@ -32,11 +33,19 @@ module top_tb;
      wire [15:0] ALU;
 	  wire Z;
 	  wire END_INC;
+	  wire [1:0] CORRECTED_OPS_N;
+	  wire [15:0] N_MUX_IN;
+	  wire [15:0] N_MUX_OUT;
+	  wire LDN;
+	  wire OP2_CONDITION;
+	  
      
 
      wire DREAD;
      wire  DWRITE;
      wire IREAD;
+	  
+	  assign OPs_valid= OPs[50:2];
 
     localparam CLK_PERIOD = 10;
 
@@ -79,8 +88,14 @@ module top_tb;
         .tr_disp(TR),
         .alu_disp(ALU),
 		  .z_disp(Z),
-		  .endinc_disp(END_INC)
-    );
+		  .endinc_disp(END_INC),
+		  .corrected_ops_n_disp_temp(CORRECTED_OPS_N),
+			.n_mux_in_disp_temp(N_MUX_IN),
+			.n_mux_out_disp_temp(N_MUX_OUT),
+			.ldn_disp(LDN),
+			.op2_condition_disp_temp(OP2_CONDITION)
+			
+			);
 
 
     initial begin

@@ -2,7 +2,7 @@ module controller(
 	input clk, 
     input [15:0] IR,  //Bit number will vary according to the number of instructions
     input z,
-	output [48:0] OPs //Made a wire because output of micromemory module should be connected to a wire 
+	output [50:0] OPs //Made a wire because output of micromemory module should be connected to a wire 
 );
 	
 

@@ -8,7 +8,7 @@ module top(
     output [15:0] dmem_disp,
 	 output [15:0] imem_disp,
 	 output [15:0] dmem_out_disp,
-     output [48:0] ops_disp,
+     output [50:0] ops_disp,
      output d_read_status,
      output  d_write_status,
      output i_read_status,
@@ -35,8 +35,11 @@ module top(
      output [15:0] tr_disp,
      output [15:0] alu_disp,
 	  output z_disp,
-	  output endinc_disp
-);
+	  output endinc_disp,
+	  output [1:0] corrected_ops_n_disp_temp,
+	  output [15:0] n_mux_in_disp_temp,
+	  output [15:0] n_mux_out_disp_temp,
+	  output op2_condition_disp_temp);
 
 
 
@@ -53,7 +56,7 @@ wire [15:0] ar_out;
 wire read_MD, read_MI, write_MD;
 
 //added for testing purposes
-wire [48:0] OPs;
+wire [50:0] OPs;
 wire [15:0] ir_out_disp_temp;
 wire [15:0] dr_out_disp_temp;
 wire [15:0] bus_disp_temp;
@@ -111,6 +114,7 @@ assign tr_disp = tr_disp_temp;
 assign alu_disp = alu_disp_temp;
 assign z_disp= z_disp_temp;
 assign endinc_disp= endinc_disp_temp;
+assign op2_condition_disp = op2_condition_disp_temp;
 
 instruction_memory IM(.read(read_MI), .address(ar_out), .instruction_out(imem_in));
 
@@ -122,8 +126,9 @@ core processor(.clk(clk), .START(START), .RESET(RESET), .dmem_in(dmem_in), .imem
  .i_disp(i_disp_temp), .j_disp(j_disp_temp),
  .tp1_disp(tp1_disp_temp), .tp2_disp(tp2_disp_temp),
  .tp3_disp(tp3_disp_temp),.count_disp(count_disp_temp), .ldn_disp(ldn_disp_temp),
- .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp)
- );
+ .ac_disp(ac_disp_temp), .tr_disp(tr_disp_temp), .alu_disp(alu_disp_temp), .z_disp(z_disp_temp), .endinc_disp(endinc_disp_temp),
+ .corrected_ops_n_disp(corrected_ops_n_disp_temp), .n_mux_in_disp(n_mux_in_disp_temp), .n_mux_out_disp(n_mux_out_disp_temp),
+ .op2_condition_disp(op2_condition_disp_temp));
 
 
 

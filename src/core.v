@@ -11,7 +11,7 @@ module core #(parameter core_id = 0) (
     output end_i,
 
     //added for testing
-    output [48:0] micro_ops,
+    output [50:0] micro_ops,
     output [15:0] ir_out_disp,
     output [15:0] dr_out_disp,
     output [15:0] bus_disp,
@@ -35,8 +35,12 @@ module core #(parameter core_id = 0) (
      output [15:0] tr_disp,
      output [15:0] alu_disp,
 	  output z_disp,
-	  output endinc_disp
-);
+	  output endinc_disp,
+	  output [1:0] corrected_ops_n_disp,
+	  output [15:0] n_mux_in_disp,
+     output [15:0] n_mux_out_disp,
+	  output op2_condition_disp);
+	  
 // wire [15:0] test_out_1;
 // wire [15:0] test_out_2;
 // wire [15:0] test_out_3;
@@ -95,8 +99,19 @@ reg_pc PC(.clk(clk), .reset(RSTPC), .load_enable(LDPC), .inc(INCPC), .data_in(dr
 buffer PC_buf(.data_in(pc_out), .select(PCBUS), .data_out(bus));
 
 wire [15:0] n_out;
-reg_rst_load N(.clk(clk), .reset(RSTN), .load_enable(LDN), .data_in(dr_out), .data_out(n_out));
+wire [15:0] n_mux_in;
+reg [1:0] corrected_OPs_n=0;
+
+assign corrected_ops_n_disp = corrected_OPs_n;
+assign n_mux_in_disp = n_mux_in;
+assign n_mux_out_disp = n_out;
+
+
+
+reg_rst_load N(.clk(clk), .reset(RSTN), .load_enable(LDN), .data_in(dr_out), .data_out(n_mux_in));
+n_mux dim_mux(.in(n_mux_in), .select(corrected_OPs_n), .out(n_out)); // n_out should be 16 bit
 buffer N_buf(.data_in(n_out), .select(NBUS), .data_out(bus));
+//buffer N_buf(.data_in(n_mux_in), .select(NBUS), .data_out(bus));
 
 wire [15:0] c_out;
 reg_rst_load C(.clk(clk), .reset(RSTC), .load_enable(LDC), .data_in(dr_out), .data_out(c_out));
@@ -186,17 +201,30 @@ assign z= ~(ac_out[0]||ac_out[1]||ac_out[2]||ac_out[3]||ac_out[4]||ac_out[5]||ac
     
 
 //Controller
-wire [48:0] OPs;
+wire [50:0] OPs;
 controller controller(.clk(corrected_clk), .IR(ir_out), .z(z), .OPs(OPs));
 
+wire [1:0] new_OPs;// to get corrected_OPs_n
 ops_decoder decoder(.uOPs(OPs), .START(START), .RESET(RESET), 
 .DREAD(DREAD), .IREAD(IREAD), .DWRITE(DWRITE), .BUSMEM(BUSMEM), .MEMBUSD(MEMBUSD), .MEMBUSI(MEMBUSI), .TRBUS(TRBUS), .DRBUS(DRBUS),  .PCBUS(PCBUS), .NBUS(NBUS),  .CBUS(CBUS), .JBUS(JBUS), 
 .IDBUS(IDBUS), .COUNTBUS(COUNTBUS),  .TP1BUS(TP1BUS), .TP2BUS(TP2BUS), .TP3BUS(TP3BUS), .ICBUS(ICBUS), .IBUS(IBUS), .IEBUS(IEBUS), .TR2BUS(TR2BUS), .ACBUS(ACBUS), .LDAR(LDAR), 
 .LDTR(LDTR), .LDDR(LDDR), .LDPC(LDPC), .LDN(LDN), .LDC(LDC), .LDIR(LDIR), .LDTP1(LDTP1), .LDTP2(LDTP2), .LDTP3(LDTP3), .LDIC(LDIC), .LDI(LDI), .LDIE(LDIE), .LDTR2(LDTR2), 
 .LDAC(LDAC), .RSTAR(RSTAR), .RSTTR(RSTTR), .RSTDR(RSTDR), .RSTPC(RSTPC), .RSTN(RSTN), .RSTC(RSTC), .RSTIR(RSTIR), .RSTJ(RSTJ), .RSTID(RSTID), .RSTCOUNT(RSTCOUNT), .RSTTP1(RSTTP1), 
 .RSTTP2(RSTTP2), .RSTTP3(RSTTP3), .RSTIC(RSTIC), .RSTI(RSTI), .RSTIE(RSTIE), .RSTTR2(RSTTR2), .RSTAC(RSTAC), .RSTEND(RSTEND), .INCPC(INCPC), .INCJ(INCJ), .INCCOUNT(INCCOUNT), 
-.INCTP1(INCTP1), .INCTP2(INCTP2), .INCI(INCI), .INCAC(INCAC), .INCEND(INCEND), .ALU0(ALU0), .ALU1(ALU1), .ALU2(ALU2), .ADDKAC(ADDKAC)
+.INCTP1(INCTP1), .INCTP2(INCTP2), .INCI(INCI), .INCAC(INCAC), .INCEND(INCEND), .ALU0(ALU0), .ALU1(ALU1), .ALU2(ALU2), .ADDKAC(ADDKAC), .new_OPs(new_OPs)
 );
+
+
+wire cond1 = OPs[17];//INCTP1
+wire cond2 = OPs[23];//JBUS
+wire cond3 = OPs[39];//ACN
+
+
+wire final_cond = cond3;
+always @(posedge final_cond) 
+	corrected_OPs_n <= new_OPs;
+
+
 
 
 // wire [15:0] end_out;
@@ -232,5 +260,6 @@ assign alu_disp = alu_out;
 assign corrected_clk_disp = corrected_clk;
 assign z_disp= z;
 assign endinc_disp= INCEND;
+assign  op2_condition_disp = final_cond;
 
 endmodule
