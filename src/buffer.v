@@ -4,8 +4,6 @@ module buffer(
 	output [15:0] data_out
    );
 
-   
-	
-   assign data_out = select ? data_in : 16'bz;
+assign data_out = select ? data_in : 16'bz;
   
 endmodule
