@@ -1,4 +1,3 @@
-
 `timescale 1 ns/10 ps 
 
 module reg_rst_load_tb;
@@ -8,7 +7,6 @@ module reg_rst_load_tb;
 	reg load_enable;
     reg [15:0] data_in;
 	wire [15:0] data_out;
-
 
 	reg_rst_load register(
         .clk(clk),
@@ -25,7 +23,6 @@ module reg_rst_load_tb;
         forever #(CLK_PERIOD/2) clk <= ~clk;
     end
 	
-	
 	initial begin
        #10 reset <= 0 ; load_enable <= 0; data_in <= 16'd2; 
 
@@ -34,11 +31,7 @@ module reg_rst_load_tb;
        #10 reset <= 0 ; load_enable <= 1; data_in <= 16'd5;
 
        #10 reset <= 1 ; load_enable <= 1; data_in <= 16'd2;
-            
-
-       
-		
-		
+        
 	end
 
 endmodule

@@ -4,7 +4,7 @@ module controller_tb;
 
 
     reg clk; 
-    reg [15:0] IR;  //Bit number will vary according to the number of instructions
+    reg [15:0] IR;  
     reg z;
 	wire [48:0] OPs;
 
@@ -20,12 +20,10 @@ module controller_tb;
 
     initial begin
        #10 IR <= 0 ; z <= 0; 
-       #10 IR <= 21 ; z <= 0;   //will not change according to IR..Will change values with the clock only
-       #10 IR <= 21 ; z <= 0;   //will not change according to IR
-       #10 IR <= 21 ; z <= 0;   //will not change according to IR
-
-            
-		
+       #10 IR <= 21 ; z <= 0;   
+       #10 IR <= 21 ; z <= 0;   
+       #10 IR <= 21 ; z <= 0;   
+	
 	end
 	
 	

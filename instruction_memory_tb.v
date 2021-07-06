@@ -6,9 +6,7 @@ module instruction_memory_tb;
     reg [15:0] address;
     wire [15:0] instruction_out;
 
-
     instruction_memory IM(.read(read), .address(address), .instruction_out(instruction_out));
-
 
     initial 
         begin
@@ -48,11 +46,7 @@ module instruction_memory_tb;
         #10 read <= 1 ; address <= 33;
         #10 read <= 1 ; address <= 34;
         #10 read <= 1 ; address <= 35;
-        
-        
-
-            
+           
         end
-	
 	
 endmodule

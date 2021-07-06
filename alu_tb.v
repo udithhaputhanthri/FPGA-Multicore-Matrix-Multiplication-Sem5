@@ -7,7 +7,8 @@ module alu_tb;
 	reg [2:0] operation;
 	wire [15:0] data_out;
 	
-	alu alu_test(.in_bus(in_bus), 
+	alu alu_test(
+	.in_bus(in_bus), 
     .in_AC(in_AC), 
     .operation(operation), 
     .data_out(data_out)

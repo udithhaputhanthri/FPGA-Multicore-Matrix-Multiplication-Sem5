@@ -1,4 +1,3 @@
-
 `timescale 1 ns/10 ps 
 
 module reg_pc_tb;
@@ -10,8 +9,6 @@ module reg_pc_tb;
     
     reg [15:0] data_in;
 	wire [15:0] data_out;
-
-
 
 	reg_pc register(
         .clk(clk),
@@ -29,19 +26,12 @@ module reg_pc_tb;
         forever #(CLK_PERIOD/2) clk <= ~clk;
     end
 	
-	
 	initial begin
        #50 reset <= 0 ; inc <= 1; data_in <= 0; load_enable = 0; 
 
        #10 reset <= 0 ; inc <= 0; data_in <= 0; load_enable = 0; 
 
-       #10 reset <= 1 ; inc <= 0; data_in <= 0; load_enable = 0;  
-
-            
-
-       
-		
-		
+       #10 reset <= 1 ; inc <= 0; data_in <= 0; load_enable = 0;  	
 	end
 
 endmodule

@@ -1,4 +1,3 @@
-
 `timescale 1 ns/10 ps 
 
 module reg_rst_inc_tb;
@@ -8,8 +7,6 @@ module reg_rst_inc_tb;
     reg inc;
 
 	wire [15:0] data_out;
-
-
 
 	reg_rst_inc register(
         .clk(clk),
@@ -31,13 +28,8 @@ module reg_rst_inc_tb;
 
        #10 reset <= 0 ; inc <= 1; 
 
-        #10 reset <= 0 ; inc <= 1; 
-
-            
-
-       
-		
-		
+       #10 reset <= 0 ; inc <= 1; 
+       	
 	end
 
 endmodule

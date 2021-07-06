@@ -9,13 +9,12 @@ module reg_ac_tb;
     reg reset;
 	
     reg [15:0] data_in;
-	 wire [15:0] data_out;
-
+	wire [15:0] data_out;
 
 	reg_ac register(
         .clk(clk),
         .inc(inc),
-		  .inck(inck),
+		.inck(inck),
         .load_enable(load_enable),
         .reset(reset),
         .data_in(data_in),
@@ -39,9 +38,8 @@ module reg_ac_tb;
 
        #10 reset <= 1 ; load_enable <= 0; data_in <= 16'd2; inc <= 1; inck <= 0;
 		 
-		 #10 reset <= 0 ; load_enable <= 0; data_in <= 16'd2; inc <= 0; inck <= 1;
-		 
-		
+	   #10 reset <= 0 ; load_enable <= 0; data_in <= 16'd2; inc <= 0; inck <= 1;
+		 	
 	end
 
 endmodule

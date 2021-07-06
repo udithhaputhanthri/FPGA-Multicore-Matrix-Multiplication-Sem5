@@ -2,7 +2,6 @@
 
 module logic_block_tb;
 
-
     reg BT_in;   
     reg mux2_out;
 	wire [1:0] signal_out;
@@ -11,12 +10,9 @@ module logic_block_tb;
 
     initial 
         begin
-        #10 BT_in <= 0 ; mux2_out <= 0; 
-        #10 BT_in <= 0 ; mux2_out <= 1;   
-        #10 BT_in <= 1 ; mux2_out <= 0; 
-
-            
+            #10 BT_in <= 0 ; mux2_out <= 0; 
+            #10 BT_in <= 0 ; mux2_out <= 1;   
+            #10 BT_in <= 1 ; mux2_out <= 0;  
         end
-	
 	
 endmodule
