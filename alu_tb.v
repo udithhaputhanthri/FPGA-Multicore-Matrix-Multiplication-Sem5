@@ -15,12 +15,13 @@ module alu_tb;
     );	
 	
 	initial begin
-		#100 in_bus=15'd2 ; in_AC= 15'd5; operation=0 ;
-		#100 in_bus=15'd2 ; in_AC= 15'd5; operation=1 ; 
-		#100 in_bus=15'd2 ; in_AC= 15'd5; operation=2 ;
-		#100 in_bus=15'd2 ; in_AC= 15'd5; operation=3 ;
-		#100 in_bus=15'd2 ; in_AC= 15'd5; operation=4 ;
-		#100 in_bus=15'd2 ; in_AC= 15'd5; operation=5 ; 
+		#100 in_bus=16'd2 ; in_AC= 16'd5; operation=0 ;
+		#100 in_bus=16'd2 ; in_AC= 16'd5; operation=1 ; 
+		#100 in_bus=16'd2 ; in_AC= 16'd5; operation=2 ;
+		#100 in_bus=16'd2 ; in_AC= 16'd5; operation=3 ;
+		#100 in_bus=16'd2 ; in_AC= 16'd5; operation=4 ;
+		#100 in_bus=16'd2 ; in_AC= 16'd5; operation=5 ; 
+
 
 	end
 	

@@ -18,13 +18,14 @@ module microcode_tb;
 	
    initial begin
   
-     #10 reg_out= 15'd0; 
-     #10 reg_out= 15'd1; 
-     #10 reg_out= 15'd2; 
-     #10 reg_out= 15'd3; 
-     #10 reg_out= 15'd4;
-     #10 reg_out= 15'd5; 
-     #10 reg_out= 15'd6; 
+     #10 reg_out= 16'd0; 
+     #10 reg_out= 16'd1; 
+     #10 reg_out= 16'd2; 
+     #10 reg_out= 16'd3; 
+     #10 reg_out= 16'd4;
+     #10 reg_out= 16'd5; 
+     #10 reg_out= 16'd6; 
+        
        
 end
 	

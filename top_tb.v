@@ -13,6 +13,7 @@ module top_tb;
     `define NULL 0 
     reg [15:0] mem_data;
 	reg [15:0] current_addr = 16'd0;
+
     reg [15:0] dmem_size = 16'd1000;
     reg write_from_tb;
 
@@ -85,7 +86,7 @@ module top_tb;
 
         $display("Reading data - completed!");
 
-        //Commanding the data memory to use the addresses and data provided by the internal testbenches
+        //Commanding the data memory to use the addresses and data provided by the internal cores
         #10 write_from_tb = 0; addr_mux_select <= 0;
         
 
