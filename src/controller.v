@@ -48,7 +48,8 @@ microcode micromemory(
 	.jump_addr(jump_addr)
 );
 	
-wire [15:0] logic_in;
+//wire [15:0] logic_in;
+wire logic_in;  //only 1 bit
 
 mux2_control_unit mux2(
 	.z(z), 

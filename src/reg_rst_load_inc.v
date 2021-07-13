@@ -13,9 +13,10 @@ always @(posedge clk)
         if (load_enable)
             data_out <= data_in;
         else if (inc)
-            data_out <= data_out + 16'd1;
+            data_out <= data_out + 16'd1;   // load_enable and inc doesnt happen at the same time
+        
         if (reset)
-            data_out <= 16'b0;
+            data_out <= 16'b0;  //reset is considered in both load_enable and inc
     end
     
 endmodule
