@@ -56,7 +56,7 @@ module top_tb;
     initial begin
 
         // Opening the file that contains matrix data
-        data_file = $fopen("../../io_txt_files/data_to_mem.txt", "r");
+        data_file = $fopen("../../../io_txt_files/data_to_mem.txt", "r");
 
         if (data_file == `NULL) begin
             $display("data_file handle was NULL");
@@ -103,7 +103,7 @@ module top_tb;
         $display("Time for multiplication (us): %t", ($realtime - capture)/1000000);
 
         // Opening a file to write the results
-        data_out = $fopen("../../io_txt_files/results_from_mem.txt","w");
+        data_out = $fopen("../../../io_txt_files/results_from_mem.txt","w");
 		$display("File Opened - results_from_mem.txt");
 
         //Point the AR to the starting location of data memory

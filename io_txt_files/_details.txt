@@ -1,2 +1,2 @@
 python save_matrix.py --n 6 --c 1
-python check_matrix.py --n 4
+python check_matrix.py --n 6
