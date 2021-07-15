@@ -1,2 +1,7 @@
-python save_matrix.py --n 6 --c 1
-python check_matrix.py --n 6
+## check square matrix
+python save_matrix.py --n 10 --c 4
+python check_matrix.py --n 10
+
+## check general matrix
+python save_matrix2.py --n1 10 --n2 10 --n3 10 --c 4
+python check_matrix2.py --n1 10 --n2 2 --n3 8
