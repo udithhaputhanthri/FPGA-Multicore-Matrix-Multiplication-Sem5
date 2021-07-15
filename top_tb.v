@@ -95,6 +95,7 @@ module top_tb;
         capture = $realtime;
 
         //Issuing start signal to start the cores
+        RESET=1; #20 RESET = 0; #20
         START = 1; RESET = 0; addr_mux_select = 0;
         #10 START = 0; RESET = 0; addr_mux_select = 0;
 

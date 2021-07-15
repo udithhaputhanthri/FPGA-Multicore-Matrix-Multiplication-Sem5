@@ -142,123 +142,123 @@ core #(.core_id(0)) processor1 (
     .end_i(END)
  );
 
-// [CORE 2]
-core #(.core_id(1)) processor2 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI2), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in2), 
-    .dmem_out(dmem_out2), 
-    .write_MD(write_MD2), 
-    .ar_out(ar_out2)
- );
+// // [CORE 2]
+// core #(.core_id(1)) processor2 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI2), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in2), 
+//     .dmem_out(dmem_out2), 
+//     .write_MD(write_MD2), 
+//     .ar_out(ar_out2)
+//  );
 
-// [CORE 3]
-core #(.core_id(2)) processor3 (
-    .clk(clk), 
-    .START(START),
-    .RESET(RESET), 
-    .read_MI(read_MI3), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in3), 
-    .dmem_out(dmem_out3), 
-    .write_MD(write_MD3), 
-    .ar_out(ar_out3)
- );
+// // [CORE 3]
+// core #(.core_id(2)) processor3 (
+//     .clk(clk), 
+//     .START(START),
+//     .RESET(RESET), 
+//     .read_MI(read_MI3), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in3), 
+//     .dmem_out(dmem_out3), 
+//     .write_MD(write_MD3), 
+//     .ar_out(ar_out3)
+//  );
 
-// [CORE 4]
-core #(.core_id(3)) processor4 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI4), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in4), 
-    .dmem_out(dmem_out4), 
-    .write_MD(write_MD4), 
-    .ar_out(ar_out4)
- );
+// // [CORE 4]
+// core #(.core_id(3)) processor4 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI4), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in4), 
+//     .dmem_out(dmem_out4), 
+//     .write_MD(write_MD4), 
+//     .ar_out(ar_out4)
+//  );
 
- // [CORE 5]
-core #(.core_id(4)) processor5 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI5), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in5), 
-    .dmem_out(dmem_out5), 
-    .write_MD(write_MD5), 
-    .ar_out(ar_out5)
- );
+//  // [CORE 5]
+// core #(.core_id(4)) processor5 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI5), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in5), 
+//     .dmem_out(dmem_out5), 
+//     .write_MD(write_MD5), 
+//     .ar_out(ar_out5)
+//  );
 
-  // [CORE 6]
-core #(.core_id(5)) processor6 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI6), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in6), 
-    .dmem_out(dmem_out6), 
-    .write_MD(write_MD6), 
-    .ar_out(ar_out6)
- );
+//   // [CORE 6]
+// core #(.core_id(5)) processor6 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI6), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in6), 
+//     .dmem_out(dmem_out6), 
+//     .write_MD(write_MD6), 
+//     .ar_out(ar_out6)
+//  );
 
-   // [CORE 7]
-core #(.core_id(6)) processor7 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI7), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in7), 
-    .dmem_out(dmem_out7), 
-    .write_MD(write_MD7), 
-    .ar_out(ar_out7)
- );
+//    // [CORE 7]
+// core #(.core_id(6)) processor7 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI7), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in7), 
+//     .dmem_out(dmem_out7), 
+//     .write_MD(write_MD7), 
+//     .ar_out(ar_out7)
+//  );
 
-  // [CORE 8]
-core #(.core_id(7)) processor8 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI8), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in8), 
-    .dmem_out(dmem_out8), 
-    .write_MD(write_MD8), 
-    .ar_out(ar_out8)
- );
+//   // [CORE 8]
+// core #(.core_id(7)) processor8 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI8), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in8), 
+//     .dmem_out(dmem_out8), 
+//     .write_MD(write_MD8), 
+//     .ar_out(ar_out8)
+//  );
 
 
-  // [CORE 9]
-core #(.core_id(8)) processor9 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI9), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in9), 
-    .dmem_out(dmem_out9), 
-    .write_MD(write_MD9), 
-    .ar_out(ar_out9)
- );
+//   // [CORE 9]
+// core #(.core_id(8)) processor9 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI9), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in9), 
+//     .dmem_out(dmem_out9), 
+//     .write_MD(write_MD9), 
+//     .ar_out(ar_out9)
+//  );
 
-   // [CORE 10]
-core #(.core_id(9)) processor10 (
-    .clk(clk), 
-    .START(START), 
-    .RESET(RESET), 
-    .read_MI(read_MI10), 
-    .imem_in(imem_in),
-    .dmem_in(dmem_in10), 
-    .dmem_out(dmem_out10), 
-    .write_MD(write_MD10), 
-    .ar_out(ar_out10)
- );
+//    // [CORE 10]
+// core #(.core_id(9)) processor10 (
+//     .clk(clk), 
+//     .START(START), 
+//     .RESET(RESET), 
+//     .read_MI(read_MI10), 
+//     .imem_in(imem_in),
+//     .dmem_in(dmem_in10), 
+//     .dmem_out(dmem_out10), 
+//     .write_MD(write_MD10), 
+//     .ar_out(ar_out10)
+//  );
 // [Data Memory]
 
 // for single core

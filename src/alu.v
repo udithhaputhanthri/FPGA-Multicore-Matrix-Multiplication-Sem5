@@ -12,7 +12,7 @@ localparam add = 2;
 localparam sub = 3;
 localparam int_div = 4;
 localparam is_mod = 5;
-	
+localparam new_op = 7; //added new &, |, ^
 		
 always @(in_bus or in_AC or operation)
 	begin
@@ -23,6 +23,7 @@ always @(in_bus or in_AC or operation)
 			sub: data_out = in_AC - in_bus;
 			int_div: data_out= (in_AC - in_AC % in_bus)/in_bus;
 			is_mod: data_out= ((in_AC % in_bus) != 0);
+			new_op: data_out= in_AC | in_bus;
 				
 			default : data_out = in_bus;
 		endcase

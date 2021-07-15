@@ -33,6 +33,7 @@ localparam END = 25;
 localparam MUL_ = 17;
 localparam ADD_ = 18;
 localparam SUB_ = 19;
+localparam NEW_ = 30; // added new
 
 //Mapping algorithm
 always @(IR)
@@ -67,6 +68,7 @@ always @(IR)
 			MUL_: map_addr <= 72;
 			ADD_: map_addr <= 73;
 			SUB_: map_addr <= 74;
+			NEW_: map_addr <= 75; //added new
 		endcase
 	end
 

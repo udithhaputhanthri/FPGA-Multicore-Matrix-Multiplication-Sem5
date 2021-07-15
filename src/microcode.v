@@ -6,7 +6,7 @@ module microcode(
 	output reg [6:0] jump_addr
 ); 
 	
-reg [58:0] ucode [0:74];
+reg [58:0] ucode [0:75];
 		
 initial 
     begin
@@ -85,6 +85,7 @@ initial
 		ucode[72] = {3'b000,7'd0,49'd512};
 		ucode[73] = {3'b000,7'd0,49'd17179869184};
 		ucode[74] = {3'b000,7'd0,49'd8};
+		ucode[75] = {3'b000,7'd0,49'd35184372088840}; // new line
 
 	end
 
