@@ -4,6 +4,8 @@
 
 * The proposed solution is implemented in Verilog Hardware Description Language using the QuartusLite 18.1.0.625.
 
+* Please find the complete report of the project [here](https://github.com/udithhaputhanthri/FPGA-Multicore-Matrix-Multiplication-Sem5/tree/organized_code/Final%20Report).
+
 ## Instruction Set Architecture (ISA)
 
 ### Instruction Set
