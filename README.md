@@ -29,6 +29,20 @@ longer be affected to the computation time when the number of cores passes the s
 
 
 
+## How to Cite
+
+```
+@software{fpga_matrixmul,
+  author       = {H.U.D.B. Haputhanthri, D.B. Ishtaweera, S.N. Liyanagoonawardena, R.M.S.N.Rajapakshe},
+  title        = {{Multi-Core Processor Design for Matrix Multiplication using FPGA: First release}},
+  month        = dec,
+  year         = 2021,
+  publisher    = {Zenodo},
+  doi          = {https://doi.org/10.5281/zenodo.5809348}}
+```
+
+
+
 
 
 
