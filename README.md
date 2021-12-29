@@ -5,7 +5,7 @@
 * The proposed solution is implemented in Verilog Hardware Description Language using the QuartusLite 18.1.0.625.
 
 ## Algorithm
-<img src="figures/algorithm.png" width="100" height="50">
+<img src="figures/algorithm.png" width=50% height=50%>
 **Fig :** Algorithm
 
 ## Instruction Set Architecture (ISA)
