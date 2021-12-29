@@ -11,26 +11,26 @@
 ## Instruction Set Architecture (ISA)
 
 ##### Data Paths
-![datapaths](figures/datapaths.png)
+<img src="figures/datapaths.png" width=50% height=50%>
 **Fig :** Data Paths Diagram
 
 ##### Instruction Set
-![instructions](figures/instructions.png)
+<img src="figures/instructions.png" width=50% height=50%>
 **Fig :** Instructions
 
 ##### State Diagram
-![state](figures/state.png)
+<img src="figures/state.png" width=50% height=50%>
 **Fig :** State Diagram
 
 ### Control Unit
-![controlunit](figures/controlunit.png)
+<img src="figures/controlunit.png" width=50% height=50%>
 **Fig :** Control Unit
 
 ## Results and Conclusion
 To this end, we have implemented and tested 10-core processor for paralleled matrix multiplication
 with 16-bit valued data. Because of the independent processing of each core, the capability of adding more cores is straight forward. With the results shown in Fig. 34, it can be seen that the computation time for matrix multiplication is decreasing when increasing the number of cores for all matrix sizes. The implemented processor is capable of doing;
 
-![results](figures/results.png)
+<img src="figures/results.png" width=50% height=50%>
 **Fig :** Results
 
 * (4x4) 16-bit valued matrix multiplication within around 1 us utilizing 4 cores.
