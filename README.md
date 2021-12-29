@@ -35,23 +35,23 @@ multiplication in Python.
 ![datapaths](figures/datapaths.png)
 **Fig :** Data Paths Diagram
 
-##### Instructions
+##### Instruction Set
 ![instructions](figures/instructions.png)
 **Fig :** Instructions
 
 ##### State Diagram
-![state](figures/state.png)
+![state](figures/state.pdf)
 **Fig :** State Diagram
 
 ### Control Unit
-![controlunit](figures/controlunit.png)
+![controlunit](figures/controlunit.pdf)
 **Fig :** Control Unit
 
 ## Results and Conclusion
 To this end, we have implemented and tested 10-core processor for paralleled matrix multiplication
 with 16-bit valued data. Because of the independent processing of each core, the capability of adding more cores is straight forward. With the results shown in Fig. 34, it can be seen that the computation time for matrix multiplication is decreasing when increasing the number of cores for all matrix sizes. The implemented processor is capable of doing;
 
-![results](figures/results.png)
+![results](figures/results.pdf)
 **Fig :** Results
 
 * (4x4) 16-bit valued matrix multiplication within around 1 us utilizing 4 cores.
