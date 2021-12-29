@@ -7,20 +7,14 @@
 ## Instruction Set Architecture (ISA)
 
 ### Instruction Set
-<img src="figures/instructions.png" width=50% height=50%>
-
-**Fig :** Instructions
+<img src="figures/instructions.png" width=70% height=70%>
 
 ### State Diagram
 <img src="figures/state.png" width=80% height=80%>
 
-**Fig :** State Diagram
-
 ## Results and Conclusion
 
-<img src="figures/results.png" width=50% height=50%>
-
-**Fig :** Results
+<img src="figures/results.png">
 
 Computation time for matrix multiplication is decreasing when increasing the number of cores for all matrix sizes. The implemented processor is capable of doing;
 
