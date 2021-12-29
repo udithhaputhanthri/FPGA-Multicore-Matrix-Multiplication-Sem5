@@ -26,7 +26,7 @@ achieved after comparing the obtained results with expected outcome calculated f
 multiplication in Python.
 
 ## Algorithm
-![algorithm](figures/algorithm.png)
+![algorithm](figures/algorithm.png | width=100)
 **Fig :** Algorithm
 
 ## Instruction Set Architecture (ISA)
